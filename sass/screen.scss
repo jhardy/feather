@@ -47,7 +47,14 @@ $feather-full-grid: ($feather-column-count * $feather-column-width) + ($feather-
         width: grid($i);
       }
     }
+
+    @if $feather-suffix == 'word' {
+      $word: number-to-word($i);
+      .#{unquote($feather-prefix)}-#{unquote($word)} {
+        width: grid($i);
+      }
+    }
   }
 }
 
-@include create-grid;
+@include create-grid();
