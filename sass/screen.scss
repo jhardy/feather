@@ -1,0 +1,53 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+
+/* The name for your prefix. String.*/
+$feather-prefix: "span";
+
+/* Style of suffix, either "integer" or "word" */
+$feather-suffix: "word";
+
+
+/* Type of grid, true false */
+$feather-fluid: false;
+
+$feather-column-count: 24;
+$feather-column-width: 60;
+$feather-gutter-width: 40;
+$feather-full-grid: ($feather-column-count * $feather-column-width) + ($feather-gutter-width * ($feather-column-count - 1));
+
+
+@function grid($count, $context: $feather-full-grid) {
+  @if $feather-fluid {
+    @return percentage((($feather-column-width * $count) + ($feather-gutter-width * ($count - 1)))/$context) ;
+  }
+  @else {
+    @return unquote(($feather-column-width * $count) + ($feather-gutter-width * ($count - 1)) + "px");
+  }
+}
+
+/* thanks foundation for inspiration */
+@function number-to-word($number) {
+  $count: 1;
+  @each $word in one, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve, thirteen, fourteen, fifteen, sixteen, seventeen, eighteen,nineteen, twenty, twenty-one, tewenty-two, twenty-three, twenty-four, twenty-five, twenty-six, twenty-seven, twenty-eight, twenty-nine, thirty,
+  thirty-one, thirty-two, thirty-three, thirty-four, thirty-five, thirty-six, thirty-seven, thirty-eight, thirty-nine, fourty {
+    @if ($number == $count) {
+      @return $word
+    }
+    $count: $count + 1;
+  }
+}
+@mixin create-grid() {
+   @for $i from 1 through $feather-column-count {
+     @if $feather-suffix == 'integer' {
+      .#{unquote($feather-prefix)}-#{$i} {
+        width: grid($i);
+      }
+    }
+  }
+}
+
+@include create-grid;
