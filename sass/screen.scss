@@ -8,7 +8,7 @@
 $feather-prefix: "span";
 
 /* Style of suffix, either "integer" or "word" */
-$feather-suffix: "word";
+$feather-suffix: "integer";
 
 
 /* Type of grid, true false */
@@ -45,9 +45,15 @@ $feather-full-grid: ($feather-column-count * $feather-column-width) + ($feather-
      @if $feather-suffix == 'integer' {
       .#{unquote($feather-prefix)}-#{$i} {
         width: grid($i);
+        /* Add margin-right expect to the last one. */
+        @if $i != $feather-column-count {
+          margin-right: $feather-gutter-width;
+        }
       }
     }
   }
 }
 
+
 @include create-grid;
+
