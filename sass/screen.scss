@@ -14,10 +14,10 @@ $feather-suffix: "integer";
 /* Type of grid, true false */
 $feather-fluid: false;
 
-$feather-column-count: 24;
+$feather-column-count: 12;
 $feather-column-width: 60;
-$feather-gutter-width: 40;
-$feather-full-grid: ($feather-column-count * $feather-column-width) + ($feather-gutter-width * ($feather-column-count - 1));
+$feather-gutter-width: 20;
+$feather-full-grid: ($feather-column-count * $feather-column-width) + ($feather-gutter-width * ($feather-column-count));
 
 
 @function grid($count, $context: $feather-full-grid) {
@@ -44,25 +44,37 @@ $feather-full-grid: ($feather-column-count * $feather-column-width) + ($feather-
    @for $i from 1 through $feather-column-count {
      @if $feather-suffix == 'integer' {
       .#{unquote($feather-prefix)}-#{$i} {
+        float: left;
         width: grid($i);
-        /* Add margin-right expect to the last one. */
-        @if $i != $feather-column-count {
-          margin-right: $feather-gutter-width;
-        }
+        margin-left: $feather-gutter-width * 1px;
+
       }
     }
 
     @if $feather-suffix == 'word' {
       $word: number-to-word($i);
       .#{unquote($feather-prefix)}-#{unquote($word)} {
+        float: left;
         width: grid($i);
-        /* Add margin-right expect to the last one. */
-        @if $i != $feather-column-count {
-          margin-right: $feather-gutter-width;
-        }
+        margin-left: $feather-gutter-width;
       }
     }
   }
 }
 
 @include create-grid;
+
+.col {
+  background: #ccc;
+  height: 50px;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.row {
+  margin-bottom: 20px;
+  width: $feather-full-grid * 1px;
+  overflow: hidden;
+  margin-left: -$feather-gutter-width * 1px;
+
+}
