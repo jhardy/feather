@@ -1,0 +1,23 @@
+/* Grid function */
+@function grid($count, $context: $feather-full-grid) {
+  @if $feather-fluid {
+    @return percentage((($feather-column-width * $count) + ($feather-gutter-width * ($count - 1)))/$context);
+    
+  }
+  @else {
+    @return unquote(($feather-column-width * $count) + ($feather-gutter-width * ($count - 1)) + "px");
+  }
+}
+
+
+/* Thanks foundation for inspiration */
+@function number-to-word($number) {
+  $count: 1;
+  @each $word in one, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve, thirteen, fourteen, fifteen, sixteen, seventeen, eighteen,nineteen, twenty, twenty-one, tewenty-two, twenty-three, twenty-four, twenty-five, twenty-six, twenty-seven, twenty-eight, twenty-nine, thirty,
+  thirty-one, thirty-two, thirty-three, thirty-four, thirty-five, thirty-six, thirty-seven, thirty-eight, thirty-nine, fourty {
+    @if ($number == $count) {
+      @return $word
+    }
+    $count: $count + 1;
+  }
+}

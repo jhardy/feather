@@ -1,0 +1,47 @@
+// Imports
+@import "feather/settings";
+@import "feather/functions";
+@import "feather/media";
+
+@mixin create-grid() {
+   /* Static */
+  @for $i from 1 through $feather-column-count {
+    @if $feather-suffix == 'integer' {
+      .#{unquote($feather-prefix)}-#{$i} {
+        float: left;
+        width: grid($i);
+        margin-left: $feather-gutter-width * 1px;
+      }
+    }
+
+    @if $feather-suffix == 'word' {
+      $word: number-to-word($i);
+      .#{unquote($feather-prefix)}-#{unquote($word)} {
+        float: left;
+        width: grid($i);
+        margin-left: $feather-gutter-width;
+      }
+    }
+  }
+}
+
+@include create-grid;
+
+.col {
+  background: #ccc;
+  height: 50px;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.row {
+  margin-bottom: 10px;
+  width: $feather-full-grid * 1px;
+  overflow: hidden;
+  margin-left: -$feather-gutter-width * 1px;
+  @include respond-to(handhelds) {
+    width: 468px;    
+  }
+
+
+}

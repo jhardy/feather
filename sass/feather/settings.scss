@@ -1,0 +1,15 @@
+/* The name for your prefix. String.*/
+$feather-prefix: "span";
+
+/* Style of suffix, either "integer" or "word" */
+$feather-suffix: "integer";
+
+
+/* Type of grid, true false */
+$feather-fluid: false;
+
+$feather-column-count: 12;
+$feather-column-width: 60;
+$feather-gutter-width: 10;
+
+$feather-full-grid: ($feather-column-count * $feather-column-width) + ($feather-gutter-width * ($feather-column-count));
