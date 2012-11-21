@@ -1,5 +1,54 @@
-// Media Queries
+/*
+ * Media queries mixins for devices.
+ */
 
+
+// iPad portrait mode
+@mixin ipad-portrait {
+	@media screen and (device-width: 768px) and (device-height: 1024px) and (orientation: portrait) {
+		@content;
+	}
+}
+
+// iPad landscape mode
+@mixin ipad-landscape {
+	@media screen and (device-width: 768px) and (device-height: 1024px) and (orientation: landscape) {
+		@content;
+	}
+}
+
+// iPad 1+ or iPad Mini
+@mixin ipad-and-mini {
+	@media screen and (device-width: 768px) and (device-height: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
+		@content;
+	}
+}
+
+// iPhone 5 + iPod Touch 5th gen
+@mixin iphone5 {
+	@media (device-height: 568px) and (-webkit-min-device-pixel-ratio: 2) {
+		@content;
+	}
+}
+
+// iPhone 4, 4S portrait mode
+@mixin iphone4-portrait {
+	@media all and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+		@content;
+	}
+}
+
+// iPhone 4, 4S landscape mode
+@mixin iphone4-landscape {
+	@media all and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
+		@content;
+	}
+}
+
+
+/*
+ * Solution 1 - General solution.
+ */
 @mixin respond-to($media) {
 	@if $media == handhelds {
 		@media only screen and (max-width: 479px) { @content; }
@@ -8,3 +57,8 @@
 		@media only screen and (min-width: 768px) and (max-width: 959px) { @content; }
 	}
 }
+
+/*
+ * Solution 2 - Change initial settings based on targeted devices. From 4 to 2 block.
+ */
+

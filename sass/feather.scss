@@ -4,7 +4,6 @@
 @import "feather/media";
 
 @mixin create-grid() {
-   /* Static */
   @for $i from 1 through $feather-column-count {
     @if $feather-suffix == 'integer' {
       .#{unquote($feather-prefix)}-#{$i} {
@@ -39,9 +38,55 @@
   width: $feather-full-grid * 1px;
   overflow: hidden;
   margin-left: -$feather-gutter-width * 1px;
+  /* Media Solution: 1 */
   @include respond-to(handhelds) {
     width: 468px;    
   }
+}
+
+/* Test: in media.html show proper device. */
+
+.devices {
+  margin: 25px 0;
+  padding: 0;
+  color: white;
+  font-size: 100%;
+  font-family: helvetica;
+  font-weight: bold;
+  list-style-type: none;
+  li {
+    width: 30%;
+    background-color: #cf3200;
+    margin-bottom: 10px;
+    padding: 5px;
+  }
+}
 
 
+@include ipad-portrait {
+  li.ipad-portrait {
+    color: white;
+    background-color: #649a00;
+  }
+}
+
+@include ipad-landscape {
+  li.ipad-landscape {
+    color: white;
+    background-color: #649a00;
+  }
+}
+
+@include iphone4-portrait {
+  li.iphone4-portrait {
+    color: white;
+    background-color: #649a00;
+  }
+}
+
+@include iphone4-landscape {
+  li.iphone4-landscape {
+    color: white;
+    background-color: #649a00;
+  }
 }

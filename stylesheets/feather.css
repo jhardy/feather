@@ -3,92 +3,100 @@
 /* Type of grid, true false */
 /* Grid function */
 /* Thanks foundation for inspiration */
-/* Static */
-/* line 10, ../sass/feather.scss */
+/*
+ * Media queries mixins for devices.
+ */
+/*
+ * Solution 1 - General solution.
+ */
+/*
+ * Solution 2 - Change initial settings based on targeted devices. From 4 to 2 block.
+ */
+/* line 9, ../sass/feather.scss */
 .span-1 {
   float: left;
   width: 60px;
   margin-left: 10px;
 }
 
-/* line 10, ../sass/feather.scss */
+/* line 9, ../sass/feather.scss */
 .span-2 {
   float: left;
   width: 130px;
   margin-left: 10px;
 }
 
-/* line 10, ../sass/feather.scss */
+/* line 9, ../sass/feather.scss */
 .span-3 {
   float: left;
   width: 200px;
   margin-left: 10px;
 }
 
-/* line 10, ../sass/feather.scss */
+/* line 9, ../sass/feather.scss */
 .span-4 {
   float: left;
   width: 270px;
   margin-left: 10px;
 }
 
-/* line 10, ../sass/feather.scss */
+/* line 9, ../sass/feather.scss */
 .span-5 {
   float: left;
   width: 340px;
   margin-left: 10px;
 }
 
-/* line 10, ../sass/feather.scss */
+/* line 9, ../sass/feather.scss */
 .span-6 {
   float: left;
   width: 410px;
   margin-left: 10px;
 }
 
-/* line 10, ../sass/feather.scss */
+/* line 9, ../sass/feather.scss */
 .span-7 {
   float: left;
   width: 480px;
   margin-left: 10px;
 }
 
-/* line 10, ../sass/feather.scss */
+/* line 9, ../sass/feather.scss */
 .span-8 {
   float: left;
   width: 550px;
   margin-left: 10px;
 }
 
-/* line 10, ../sass/feather.scss */
+/* line 9, ../sass/feather.scss */
 .span-9 {
   float: left;
   width: 620px;
   margin-left: 10px;
 }
 
-/* line 10, ../sass/feather.scss */
+/* line 9, ../sass/feather.scss */
 .span-10 {
   float: left;
   width: 690px;
   margin-left: 10px;
 }
 
-/* line 10, ../sass/feather.scss */
+/* line 9, ../sass/feather.scss */
 .span-11 {
   float: left;
   width: 760px;
   margin-left: 10px;
 }
 
-/* line 10, ../sass/feather.scss */
+/* line 9, ../sass/feather.scss */
 .span-12 {
   float: left;
   width: 830px;
   margin-left: 10px;
 }
 
-/* line 30, ../sass/feather.scss */
+/* line 29, ../sass/feather.scss */
 .col {
   background: #ccc;
   height: 50px;
@@ -96,16 +104,65 @@
   text-align: center;
 }
 
-/* line 37, ../sass/feather.scss */
+/* line 36, ../sass/feather.scss */
 .row {
   margin-bottom: 10px;
   width: 840px;
   overflow: hidden;
   margin-left: -10px;
+  /* Media Solution: 1 */
 }
 @media only screen and (max-width: 479px) {
-  /* line 37, ../sass/feather.scss */
+  /* line 36, ../sass/feather.scss */
   .row {
     width: 468px;
+  }
+}
+
+/* Test: in media.html show proper device. */
+/* line 49, ../sass/feather.scss */
+.devices {
+  margin: 25px 0;
+  padding: 0;
+  color: white;
+  font-size: 100%;
+  font-family: helvetica;
+  font-weight: bold;
+  list-style-type: none;
+}
+/* line 57, ../sass/feather.scss */
+.devices li {
+  width: 30%;
+  background-color: #cf3200;
+  margin-bottom: 10px;
+  padding: 5px;
+}
+
+@media screen and (device-width: 768px) and (device-height: 1024px) and (orientation: portrait) {
+  /* line 67, ../sass/feather.scss */
+  li.ipad-portrait {
+    color: white;
+    background-color: #649a00;
+  }
+}
+@media screen and (device-width: 768px) and (device-height: 1024px) and (orientation: landscape) {
+  /* line 74, ../sass/feather.scss */
+  li.ipad-landscape {
+    color: white;
+    background-color: #649a00;
+  }
+}
+@media all and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+  /* line 81, ../sass/feather.scss */
+  li.iphone4-portrait {
+    color: white;
+    background-color: #649a00;
+  }
+}
+@media all and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
+  /* line 88, ../sass/feather.scss */
+  li.iphone4-landscape {
+    color: white;
+    background-color: #649a00;
   }
 }
