@@ -152,16 +152,30 @@
     background-color: #649a00;
   }
 }
-@media all and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+@media screen and (device-width: 768px) and (device-height: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
   /* line 81, ../sass/feather.scss */
+  li.ipad-or-min {
+    color: white;
+    background-color: #649a00;
+  }
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+  /* line 88, ../sass/feather.scss */
   li.iphone4-portrait {
     color: white;
     background-color: #649a00;
   }
 }
-@media all and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
-  /* line 88, ../sass/feather.scss */
+@media only screen and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
+  /* line 95, ../sass/feather.scss */
   li.iphone4-landscape {
+    color: white;
+    background-color: #649a00;
+  }
+}
+@media all and (device-height: 568px) and (-webkit-min-device-pixel-ratio: 2) {
+  /* line 102, ../sass/feather.scss */
+  li.iphone5-ipod-5th {
     color: white;
     background-color: #649a00;
   }

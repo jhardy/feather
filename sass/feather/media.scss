@@ -26,21 +26,21 @@
 
 // iPhone 5 + iPod Touch 5th gen
 @mixin iphone5 {
-	@media (device-height: 568px) and (-webkit-min-device-pixel-ratio: 2) {
+	@media all and (device-height: 568px) and (-webkit-min-device-pixel-ratio: 2) {
 		@content;
 	}
 }
 
 // iPhone 4, 4S portrait mode
 @mixin iphone4-portrait {
-	@media all and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+	@media only screen and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
 		@content;
 	}
 }
 
 // iPhone 4, 4S landscape mode
 @mixin iphone4-landscape {
-	@media all and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
+	@media only screen and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
 		@content;
 	}
 }

@@ -77,6 +77,13 @@
   }
 }
 
+@include ipad-and-mini {
+  li.ipad-or-min {
+    color: white;
+    background-color: #649a00;
+  }
+}
+
 @include iphone4-portrait {
   li.iphone4-portrait {
     color: white;
@@ -86,6 +93,13 @@
 
 @include iphone4-landscape {
   li.iphone4-landscape {
+    color: white;
+    background-color: #649a00;
+  }
+}
+
+@include iphone5 {
+  li.iphone5-ipod-5th {
     color: white;
     background-color: #649a00;
   }
