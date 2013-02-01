@@ -80,12 +80,22 @@ $feather-pull-name: "pull" !default;
 @mixin row {
   margin-left: unit($feather-gutter-width * -1);
 
- &:after {
+  &:after {
     content: "";
     display: table;
     clear: both;
   }
 }
+
+@mixin column {
+  float: left;
+  margin-left: unit($feather-gutter-width);
+}
+
+[class*="#{$feather-prefix}#{$feather-seperator}"] {
+  @include column;
+}
+
 .container {
   @include container;
 }
@@ -95,13 +105,12 @@ $feather-pull-name: "pull" !default;
   height: 50px;
   border-radius: 4px;
   text-align: center;
-  margin-left: unit($feather-gutter-width);
+
 }
 
 .row {
   @include row;
   margin-bottom: 20px;
-
 }
 
 @include create-grid;
