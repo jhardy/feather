@@ -3,78 +3,118 @@
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 
+/* apply a natural box layout model to all elements */
+* { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
 
 /* The name for your prefix. String.*/
-$feather-prefix: "span";
+$feather-prefix: "span" !default;
 
-/* Style of suffix, either "integer" or "word" */
-$feather-suffix: "integer";
-
+/* The name for your prefix. String.*/
+$feather-seperator: "-" !default;
 
 /* Type of grid, true false */
-$feather-fluid: false;
+$feather-fluid: true !default;
+$feather-max-width: true;
 
-$feather-column-count: 12;
-$feather-column-width: 60;
-$feather-gutter-width: 20;
-$feather-full-grid: ($feather-column-count * $feather-column-width) + ($feather-gutter-width * ($feather-column-count));
+$feather-column-count: 12 !default;
+$feather-column-width: 60 !default;
+$feather-gutter-width: 20 !default;
+$feather-grid-unit: $feather-column-width + $feather-gutter-width !default;
+
+// Full width of grid based on parameters above
+$feather-full-grid: $feather-grid-unit * $feather-column-count;
 
 
-@function grid($count, $context: $feather-full-grid) {
+
+/* Names for push and pull classes */
+$feather-include-offset: true;
+$feather-offset-name: "offset" !default;
+
+$feather-include-pull: true;
+$feather-pull-name: "pull" !default;
+
+
+
+@function unit($number, $context: $feather-full-grid) {
   @if $feather-fluid {
-    @return percentage((($feather-column-width * $count) + ($feather-gutter-width * ($count - 1)))/$context) ;
+    @return percentage($number / $context);
   }
   @else {
-    @return unquote(($feather-column-width * $count) + ($feather-gutter-width * ($count - 1)) + "px");
+    @return unquote($number + "px");
   }
 }
 
-/* thanks foundation for inspiration */
-@function number-to-word($number) {
-  $count: 1;
-  @each $word in one, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve, thirteen, fourteen, fifteen, sixteen, seventeen, eighteen,nineteen, twenty, twenty-one, tewenty-two, twenty-three, twenty-four, twenty-five, twenty-six, twenty-seven, twenty-eight, twenty-nine, thirty,
-  thirty-one, thirty-two, thirty-three, thirty-four, thirty-five, thirty-six, thirty-seven, thirty-eight, thirty-nine, fourty {
-    @if ($number == $count) {
-      @return $word
-    }
-    $count: $count + 1;
-  }
+@function grid($count, $context: $feather-full-grid) {
+  $value: ($feather-grid-unit * $count) - $feather-gutter-width;
+  @return unit($value, $context);
 }
+
+
+@mixin pull($count, $context: $feather-full-grid) {
+  $value: ($feather-grid-unit * $count) - $feather-gutter-width;
+  margin-left:  unit($value * -1, $context);
+}
+
+@mixin offset($count, $context: $feather-full-grid) {
+  $value: ($feather-grid-unit * $count) + $feather-gutter-width;
+  margin-left:  unit($value, $context);
+}
+
+
 @mixin create-grid() {
-   @for $i from 1 through $feather-column-count {
-     @if $feather-suffix == 'integer' {
-      .#{unquote($feather-prefix)}-#{$i} {
-        float: left;
-        width: grid($i);
-        margin-left: $feather-gutter-width * 1px;
-
-      }
-    }
-
-    @if $feather-suffix == 'word' {
-      $word: number-to-word($i);
-      .#{unquote($feather-prefix)}-#{unquote($word)} {
-        float: left;
-        width: grid($i);
-        margin-left: $feather-gutter-width;
-      }
+ @for $i from 1 through $feather-column-count {
+    .#{unquote($feather-prefix)}#{unquote($feather-seperator)}#{$i} {
+      width: grid($i);
     }
   }
 }
 
-@include create-grid;
+@mixin container {
+  margin: 0  auto;
+  width: unit($feather-full-grid);
+  @if $feather-max-width {
+    max-width: $feather-full-grid + px;
+  }
+}
 
+@mixin row {
+  margin-left: unit($feather-gutter-width * -1);
+
+ &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+.container {
+  @include container;
+}
 .col {
+  float: left;
   background: #ccc;
   height: 50px;
   border-radius: 4px;
   text-align: center;
+  margin-left: unit($feather-gutter-width);
 }
 
 .row {
+  @include row;
   margin-bottom: 20px;
-  width: $feather-full-grid * 1px;
-  overflow: hidden;
-  margin-left: -$feather-gutter-width * 1px;
 
 }
+
+@include create-grid;
+
+@for $i from 1 through ($feather-column-count - 1) {
+  .#{unquote($feather-offset-name)}-#{$i} {
+    @include offset($i)
+  }
+}
+
+@for $i from 1 through ($feather-column-count - 1) {
+  .#{unquote($feather-pull-name)}-#{$i} {
+    @include pull($i)
+  }
+}
+

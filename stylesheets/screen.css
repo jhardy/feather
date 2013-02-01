@@ -2,106 +2,213 @@
  * In this file you should write your main styles. (or centralize your imports)
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* apply a natural box layout model to all elements */
+/* line 7, ../sass/screen.scss */
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
 /* The name for your prefix. String.*/
-/* Style of suffix, either "integer" or "word" */
+/* The name for your prefix. String.*/
 /* Type of grid, true false */
-/* thanks foundation for inspiration */
-/* line 46, ../sass/screen.scss */
-.span-1 {
-  float: left;
-  width: 60px;
-  margin-left: 20px;
+/* Names for push and pull classes */
+/* line 89, ../sass/screen.scss */
+.container {
+  margin: 0  auto;
+  width: 100%;
+  max-width: 960px;
 }
 
-/* line 46, ../sass/screen.scss */
-.span-2 {
-  float: left;
-  width: 140px;
-  margin-left: 20px;
-}
-
-/* line 46, ../sass/screen.scss */
-.span-3 {
-  float: left;
-  width: 220px;
-  margin-left: 20px;
-}
-
-/* line 46, ../sass/screen.scss */
-.span-4 {
-  float: left;
-  width: 300px;
-  margin-left: 20px;
-}
-
-/* line 46, ../sass/screen.scss */
-.span-5 {
-  float: left;
-  width: 380px;
-  margin-left: 20px;
-}
-
-/* line 46, ../sass/screen.scss */
-.span-6 {
-  float: left;
-  width: 460px;
-  margin-left: 20px;
-}
-
-/* line 46, ../sass/screen.scss */
-.span-7 {
-  float: left;
-  width: 540px;
-  margin-left: 20px;
-}
-
-/* line 46, ../sass/screen.scss */
-.span-8 {
-  float: left;
-  width: 620px;
-  margin-left: 20px;
-}
-
-/* line 46, ../sass/screen.scss */
-.span-9 {
-  float: left;
-  width: 700px;
-  margin-left: 20px;
-}
-
-/* line 46, ../sass/screen.scss */
-.span-10 {
-  float: left;
-  width: 780px;
-  margin-left: 20px;
-}
-
-/* line 46, ../sass/screen.scss */
-.span-11 {
-  float: left;
-  width: 860px;
-  margin-left: 20px;
-}
-
-/* line 46, ../sass/screen.scss */
-.span-12 {
-  float: left;
-  width: 940px;
-  margin-left: 20px;
-}
-
-/* line 67, ../sass/screen.scss */
+/* line 92, ../sass/screen.scss */
 .col {
+  float: left;
   background: #ccc;
   height: 50px;
   border-radius: 4px;
   text-align: center;
+  margin-left: 2.08333%;
 }
 
-/* line 74, ../sass/screen.scss */
+/* line 101, ../sass/screen.scss */
 .row {
+  margin-left: -2.08333%;
   margin-bottom: 20px;
-  width: 960px;
-  overflow: hidden;
-  margin-left: -20px;
+}
+/* line 83, ../sass/screen.scss */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* line 66, ../sass/screen.scss */
+.span-1 {
+  width: 6.25%;
+}
+
+/* line 66, ../sass/screen.scss */
+.span-2 {
+  width: 14.58333%;
+}
+
+/* line 66, ../sass/screen.scss */
+.span-3 {
+  width: 22.91667%;
+}
+
+/* line 66, ../sass/screen.scss */
+.span-4 {
+  width: 31.25%;
+}
+
+/* line 66, ../sass/screen.scss */
+.span-5 {
+  width: 39.58333%;
+}
+
+/* line 66, ../sass/screen.scss */
+.span-6 {
+  width: 47.91667%;
+}
+
+/* line 66, ../sass/screen.scss */
+.span-7 {
+  width: 56.25%;
+}
+
+/* line 66, ../sass/screen.scss */
+.span-8 {
+  width: 64.58333%;
+}
+
+/* line 66, ../sass/screen.scss */
+.span-9 {
+  width: 72.91667%;
+}
+
+/* line 66, ../sass/screen.scss */
+.span-10 {
+  width: 81.25%;
+}
+
+/* line 66, ../sass/screen.scss */
+.span-11 {
+  width: 89.58333%;
+}
+
+/* line 66, ../sass/screen.scss */
+.span-12 {
+  width: 97.91667%;
+}
+
+/* line 110, ../sass/screen.scss */
+.offset-1 {
+  margin-left: 10.41667%;
+}
+
+/* line 110, ../sass/screen.scss */
+.offset-2 {
+  margin-left: 18.75%;
+}
+
+/* line 110, ../sass/screen.scss */
+.offset-3 {
+  margin-left: 27.08333%;
+}
+
+/* line 110, ../sass/screen.scss */
+.offset-4 {
+  margin-left: 35.41667%;
+}
+
+/* line 110, ../sass/screen.scss */
+.offset-5 {
+  margin-left: 43.75%;
+}
+
+/* line 110, ../sass/screen.scss */
+.offset-6 {
+  margin-left: 52.08333%;
+}
+
+/* line 110, ../sass/screen.scss */
+.offset-7 {
+  margin-left: 60.41667%;
+}
+
+/* line 110, ../sass/screen.scss */
+.offset-8 {
+  margin-left: 68.75%;
+}
+
+/* line 110, ../sass/screen.scss */
+.offset-9 {
+  margin-left: 77.08333%;
+}
+
+/* line 110, ../sass/screen.scss */
+.offset-10 {
+  margin-left: 85.41667%;
+}
+
+/* line 110, ../sass/screen.scss */
+.offset-11 {
+  margin-left: 93.75%;
+}
+
+/* line 116, ../sass/screen.scss */
+.pull-1 {
+  margin-left: -6.25%;
+}
+
+/* line 116, ../sass/screen.scss */
+.pull-2 {
+  margin-left: -14.58333%;
+}
+
+/* line 116, ../sass/screen.scss */
+.pull-3 {
+  margin-left: -22.91667%;
+}
+
+/* line 116, ../sass/screen.scss */
+.pull-4 {
+  margin-left: -31.25%;
+}
+
+/* line 116, ../sass/screen.scss */
+.pull-5 {
+  margin-left: -39.58333%;
+}
+
+/* line 116, ../sass/screen.scss */
+.pull-6 {
+  margin-left: -47.91667%;
+}
+
+/* line 116, ../sass/screen.scss */
+.pull-7 {
+  margin-left: -56.25%;
+}
+
+/* line 116, ../sass/screen.scss */
+.pull-8 {
+  margin-left: -64.58333%;
+}
+
+/* line 116, ../sass/screen.scss */
+.pull-9 {
+  margin-left: -72.91667%;
+}
+
+/* line 116, ../sass/screen.scss */
+.pull-10 {
+  margin-left: -81.25%;
+}
+
+/* line 116, ../sass/screen.scss */
+.pull-11 {
+  margin-left: -89.58333%;
 }
