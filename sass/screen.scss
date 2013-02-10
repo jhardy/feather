@@ -33,6 +33,8 @@ $feather-offset-name: "offset" !default;
 $feather-include-pull: true;
 $feather-pull-name: "pull" !default;
 
+$feather-default-float: left !default;
+
 
 @function unit($number, $context: $feather-full-grid) {
   @if $feather-fluid {
@@ -76,6 +78,11 @@ $feather-pull-name: "pull" !default;
   }
 }
 
+%parent-grid {
+  padding-left: 0;
+  padding-right: 0;
+}
+
 %row {
   margin-left: unit($feather-gutter-width * -1);
 
@@ -87,7 +94,7 @@ $feather-pull-name: "pull" !default;
 }
 
 %column {
-  float: left;
+  float: $feather-default-float;
   padding-left: unit($feather-gutter-width/2);
   padding-right: unit($feather-gutter-width/2);
 }
@@ -106,11 +113,18 @@ $feather-pull-name: "pull" !default;
 
 [class*="#{$feather-prefix}#{$feather-seperator}"] {
   @extend %column;
+
+  &.is-parent {
+  @extend %parent-grid;
+}
 }
 
 .container {
   @extend %container;
 }
+
+
+
 
 
 .col {
