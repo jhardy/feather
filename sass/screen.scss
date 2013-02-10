@@ -34,7 +34,6 @@ $feather-include-pull: true;
 $feather-pull-name: "pull" !default;
 
 
-
 @function unit($number, $context: $feather-full-grid) {
   @if $feather-fluid {
     @return percentage($number / $context);
@@ -45,7 +44,7 @@ $feather-pull-name: "pull" !default;
 }
 
 @function grid($count, $context: $feather-full-grid) {
-  $value: ($feather-grid-unit * $count) - $feather-gutter-width;
+  $value: ($feather-grid-unit * $count);
   @return unit($value, $context);
 }
 
@@ -69,7 +68,7 @@ $feather-pull-name: "pull" !default;
   }
 }
 
-@mixin container {
+%container {
   margin: 0  auto;
   width: unit($feather-full-grid);
   @if $feather-max-width {
@@ -77,7 +76,7 @@ $feather-pull-name: "pull" !default;
   }
 }
 
-@mixin row {
+%row {
   margin-left: unit($feather-gutter-width * -1);
 
   &:after {
@@ -87,29 +86,67 @@ $feather-pull-name: "pull" !default;
   }
 }
 
-@mixin column {
+%column {
   float: left;
-  margin-left: unit($feather-gutter-width);
+  padding-left: unit($feather-gutter-width/2);
+  padding-right: unit($feather-gutter-width/2);
+}
+
+%one-fourth {
+  width: 25%
+}
+
+%one-third {
+  width: 33.33%;
+}
+
+%one-half {
+  width: 50%;
 }
 
 [class*="#{$feather-prefix}#{$feather-seperator}"] {
-  @include column;
+  @extend %column;
 }
 
 .container {
-  @include container;
+  @extend %container;
 }
+
+
 .col {
   float: left;
   background: #ccc;
   height: 50px;
   border-radius: 4px;
   text-align: center;
-
 }
 
 .row {
-  @include row;
+  @extend %row;
+  margin-bottom: 20px;
+}
+
+.third {
+  @extend %column;
+  @extend %one-third;
+}
+
+.fourth {
+  @extend %column;
+  @extend %one-fourth;
+}
+
+.half {
+  @extend %column;
+  @extend %one-half;
+}
+
+
+.example {
+  background: #eee;
+  color: #333;
+  text-align:  center;
+  padding: 20px 0;
   margin-bottom: 20px;
 }
 
@@ -124,6 +161,17 @@ $feather-pull-name: "pull" !default;
 @for $i from 1 through ($feather-column-count - 1) {
   .#{unquote($feather-pull-name)}-#{$i} {
     @include pull($i)
+  }
+}
+
+
+.prefix,
+.postfix {
+  width: 200px;
+
+  &.span {
+    background: darken(#fff, 5%);
+    border: 1px solid darken(#fff, 20%);
   }
 }
 
