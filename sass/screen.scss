@@ -52,13 +52,18 @@ $feather-default-float: left !default;
 
 
 @mixin pull($count, $context: $feather-full-grid) {
-  $value: ($feather-grid-unit * $count) - $feather-gutter-width;
+  $value: ($feather-grid-unit * $count);
   margin-left:  unit($value * -1, $context);
 }
 
 @mixin offset($count, $context: $feather-full-grid) {
-  $value: ($feather-grid-unit * $count) + $feather-gutter-width;
+  $value: ($feather-grid-unit * $count);
   margin-left:  unit($value, $context);
+}
+
+@mixin center() {
+  float: none;
+  margin: 0 auto;
 }
 
 
@@ -69,6 +74,9 @@ $feather-default-float: left !default;
     }
   }
 }
+
+
+
 
 %container {
   margin: 0  auto;
@@ -156,6 +164,7 @@ $feather-default-float: left !default;
 }
 
 
+
 .example {
   background: #eee;
   color: #333;
@@ -166,16 +175,20 @@ $feather-default-float: left !default;
 
 @include create-grid;
 
-@for $i from 1 through ($feather-column-count - 1) {
+@for $i from 1 through $feather-column-count {
   .#{unquote($feather-offset-name)}-#{$i} {
     @include offset($i)
   }
 }
 
-@for $i from 1 through ($feather-column-count - 1) {
+@for $i from 1 through $feather-column-count {
   .#{unquote($feather-pull-name)}-#{$i} {
     @include pull($i)
   }
+}
+
+.centered {
+  @include center();
 }
 
 
