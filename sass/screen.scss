@@ -68,15 +68,45 @@ $feather-default-float: left !default;
 
 
 @mixin create-grid() {
+
  @for $i from 1 through $feather-column-count {
     .#{unquote($feather-prefix)}#{unquote($feather-seperator)}#{$i} {
       width: grid($i);
     }
   }
+
+  @if $feather-include-offset {
+    @for $i from 1 through $feather-column-count {
+      .#{unquote($feather-offset-name)}-#{$i} {
+        @include offset($i);
+      }
+    }
+  }
+
+  @if $feather-include-pull {
+    @for $i from 1 through $feather-column-count {
+      .#{unquote($feather-pull-name)}-#{$i} {
+        @include pull($i)
+      }
+    }
+  }
+
+  [class*="#{$feather-prefix}#{$feather-seperator}"] {
+    @extend %column;
+
+     &.is-parent {
+      @extend %parent-grid;
+    }
+  }
+
+  .container {
+    @extend %container;
+  }
+
+  .centered {
+    @include center();
+  }
 }
-
-
-
 
 %container {
   margin: 0  auto;
@@ -119,20 +149,6 @@ $feather-default-float: left !default;
   width: 50%;
 }
 
-[class*="#{$feather-prefix}#{$feather-seperator}"] {
-  @extend %column;
-
-  &.is-parent {
-  @extend %parent-grid;
-}
-}
-
-.container {
-  @extend %container;
-}
-
-
-
 
 
 .col {
@@ -173,23 +189,9 @@ $feather-default-float: left !default;
   margin-bottom: 20px;
 }
 
+
+
 @include create-grid;
-
-@for $i from 1 through $feather-column-count {
-  .#{unquote($feather-offset-name)}-#{$i} {
-    @include offset($i)
-  }
-}
-
-@for $i from 1 through $feather-column-count {
-  .#{unquote($feather-pull-name)}-#{$i} {
-    @include pull($i)
-  }
-}
-
-.centered {
-  @include center();
-}
 
 
 .prefix,
