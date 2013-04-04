@@ -10,7 +10,7 @@
 $feather-prefix: "span" !default;
 
 /* The name for your prefix. String.*/
-$feather-seperator: "-" !default;
+$feather-separator: "-" !default;
 
 /* Type of grid, true false */
 $feather-fluid: true !default;
@@ -23,7 +23,6 @@ $feather-grid-unit: $feather-column-width + $feather-gutter-width !default;
 
 // Full width of grid based on parameters above
 $feather-full-grid: $feather-grid-unit * $feather-column-count;
-
 
 
 /* Names for push and pull classes */
@@ -67,31 +66,31 @@ $feather-default-float: left !default;
 }
 
 
-@mixin create-grid() {
+@mixin create-grid($prefix: $feather-prefix, $separator:$feather-separator, $columns: $feather-column-count, $column-width: $feather-column-width, $gutter-width: $feather-gutter-width, $offset: $feather-include-offset, $offset-name: $feather-offset-name, $pull: $feather-include-pull, $pull-name: $feather-pull-name, $default-float: $feather-default-float) {
 
- @for $i from 1 through $feather-column-count {
-    .#{unquote($feather-prefix)}#{unquote($feather-seperator)}#{$i} {
+ @for $i from 1 through $columns {
+    .#{unquote($prefix)}#{unquote($separator)}#{$i} {
       width: grid($i);
     }
   }
 
-  @if $feather-include-offset {
-    @for $i from 1 through $feather-column-count {
-      .#{unquote($feather-offset-name)}-#{$i} {
+  @if $offset {
+    @for $i from 1 through $columns {
+      .#{unquote($offset-name)}-#{$i} {
         @include offset($i);
       }
     }
   }
 
-  @if $feather-include-pull {
-    @for $i from 1 through $feather-column-count {
-      .#{unquote($feather-pull-name)}-#{$i} {
+  @if $pull {
+    @for $i from 1 through $columns {
+      .#{unquote($pull-name)}-#{$i} {
         @include pull($i)
       }
     }
   }
 
-  [class*="#{$feather-prefix}#{$feather-seperator}"] {
+  [class*="#{$prefix}#{$separator}"] {
     @extend %column;
 
      &.is-parent {
