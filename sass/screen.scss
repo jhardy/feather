@@ -16,10 +16,44 @@ $feather-separator: "-" !default;
 $feather-fluid: true !default;
 $feather-max-width: true;
 
-$feather-column-count: 12 !default;
-$feather-column-width: 60 !default;
-$feather-gutter-width: 20 !default;
+// $feather-column-count: 12 !default;
+// $feather-column-width: 60 !default;
+// $feather-gutter-width: 20 !default;
+
+
+
+$feather-grid-width: 1000;
+$feather-column-width: 60;
+$feather-column-count: 12;
+$feather-gutter-width: false;
+
+$tcw: false;
+$los: false;
+
+@function calculate-gutter($grid-width: $feather-grid-width, $column-width: $feather-column-width, $column-count: $feather-column-count, $gutter-width: $feather-gutter-width) {
+  $total-column-width: $column-width * $column-count;
+  $tcw: $total-column-width;
+  $leftover-space: $grid-width - $total-column-width;
+  $los: $leftover-space;
+
+  @if $feather-gutter-width {
+    @return $gutter-width;
+  }
+  @else {
+    @return $leftover-space / ($column-count - 1);
+  }
+}
+
+
+$feather-gutter-width: calculate-gutter();
+
 $feather-grid-unit: $feather-column-width + $feather-gutter-width !default;
+
+#test {
+  total-column-width: $tcw;
+  leftover-space: $los;
+  gutter-width: $feather-gutter-width;
+}
 
 // Full width of grid based on parameters above
 $feather-full-grid: $feather-grid-unit * $feather-column-count;
@@ -120,15 +154,7 @@ $feather-default-float: left !default;
   padding-right: 0;
 }
 
-%row {
-  margin-left: unit($feather-gutter-width * -1);
 
-  &:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-}
 
 %column {
   float: $feather-default-float;
@@ -148,8 +174,6 @@ $feather-default-float: left !default;
   width: 50%;
 }
 
-
-
 .col {
   float: left;
   background: #ccc;
@@ -158,10 +182,6 @@ $feather-default-float: left !default;
   text-align: center;
 }
 
-.row {
-  @extend %row;
-  margin-bottom: 20px;
-}
 
 .third {
   @extend %column;
@@ -202,4 +222,6 @@ $feather-default-float: left !default;
     border: 1px solid darken(#fff, 20%);
   }
 }
+
+
 
