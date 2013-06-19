@@ -22,10 +22,10 @@ $feather-max-width: true;
 
 
 
-$feather-grid-width: 1000;
-$feather-column-width: 60;
-$feather-column-count: 12;
-$feather-gutter-width: false;
+$feather-grid-width: 1000 !default;
+$feather-column-width: 60 !default;
+$feather-column-count: 12 !default;
+$feather-gutter-width: false !default;
 
 $tcw: false;
 $los: false;
@@ -154,8 +154,6 @@ $feather-default-float: left !default;
   padding-right: 0;
 }
 
-
-
 %column {
   float: $feather-default-float;
   padding-left: unit($feather-gutter-width/2);
@@ -182,7 +180,6 @@ $feather-default-float: left !default;
   text-align: center;
 }
 
-
 .third {
   @extend %column;
   @extend %one-third;
@@ -198,8 +195,6 @@ $feather-default-float: left !default;
   @extend %one-half;
 }
 
-
-
 .example {
   background: #eee;
   color: #333;
@@ -208,10 +203,7 @@ $feather-default-float: left !default;
   margin-bottom: 20px;
 }
 
-
-
 @include create-grid;
-
 
 .prefix,
 .postfix {
@@ -222,6 +214,3 @@ $feather-default-float: left !default;
     border: 1px solid darken(#fff, 20%);
   }
 }
-
-
-

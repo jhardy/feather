@@ -34,29 +34,29 @@
   padding-right: 0;
 }
 
-/* line 159, ../sass/screen.scss */
+/* line 157, ../sass/screen.scss */
 .third, .fourth, .half, [class*="span-"] {
   float: left;
   padding-left: 1.24113%;
   padding-right: 1.24113%;
 }
 
-/* line 165, ../sass/screen.scss */
+/* line 163, ../sass/screen.scss */
 .fourth {
   width: 25%;
 }
 
-/* line 169, ../sass/screen.scss */
+/* line 167, ../sass/screen.scss */
 .third {
   width: 33.33%;
 }
 
-/* line 173, ../sass/screen.scss */
+/* line 171, ../sass/screen.scss */
 .half {
   width: 50%;
 }
 
-/* line 177, ../sass/screen.scss */
+/* line 175, ../sass/screen.scss */
 .col {
   float: left;
   background: #ccc;
@@ -65,7 +65,7 @@
   text-align: center;
 }
 
-/* line 203, ../sass/screen.scss */
+/* line 198, ../sass/screen.scss */
 .example {
   background: #eee;
   color: #333;
@@ -260,12 +260,12 @@
   margin: 0 auto;
 }
 
-/* line 217, ../sass/screen.scss */
+/* line 209, ../sass/screen.scss */
 .prefix,
 .postfix {
   width: 200px;
 }
-/* line 220, ../sass/screen.scss */
+/* line 212, ../sass/screen.scss */
 .prefix.span,
 .postfix.span {
   background: #f2f2f2;
