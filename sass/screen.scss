@@ -10,15 +10,30 @@ $feather-screen-small: 786px !default;
 $feather-screen-medium: 992px !default;
 $feather-screen-large: 1200px !default;
 
-/* The name for your prefix. String.*/
+// The name for your prefix.
 $feather-prefix: "span" !default;
 
-/* The name for your prefix. String.*/
+// Separator name.
 $feather-separator: "-" !default;
+
+// The name for your small size prefix
+$feather-prefix-small: "sm";
+$feather-small-separator: "-";
+
+// Name for your medium size prefix
+$feather-prefix-med: "med";
+$feather-med-separator: "-";
+
+// Name for your large size prefix
+$feather-prefix-large: "lg";
+$feather-large-separator: "-";
+
+
 
 /* Type of grid, true false */
 $feather-fluid: true !default;
 $feather-max-width: true;
+
 
 // $feather-column-count: 12 !default;
 // $feather-column-width: 60 !default;
