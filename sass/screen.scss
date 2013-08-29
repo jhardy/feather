@@ -6,6 +6,10 @@
 /* apply a natural box layout model to all elements */
 * { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
 
+$feather-screen-small: 786px !default;
+$feather-screen-medium: 992px !default;
+$feather-screen-large: 1200px !default;
+
 /* The name for your prefix. String.*/
 $feather-prefix: "span" !default;
 
@@ -26,6 +30,9 @@ $feather-grid-width: 1000 !default;
 $feather-column-width: 60 !default;
 $feather-column-count: 12 !default;
 $feather-gutter-width: false !default;
+
+
+$feather-grid: $feather-grid-width, $feather-column-width, $feather-column-count, $feather-gutter-width;
 
 $tcw: false;
 $los: false;
