@@ -34,14 +34,8 @@ $feather-gutter-width: false !default;
 
 $feather-grid: $feather-grid-width, $feather-column-width, $feather-column-count, $feather-gutter-width;
 
-$tcw: false;
-$los: false;
-
 @function calculate-gutter($grid-width: $feather-grid-width, $column-width: $feather-column-width, $column-count: $feather-column-count, $gutter-width: $feather-gutter-width) {
-  $total-column-width: $column-width * $column-count;
-  $tcw: $total-column-width;
-  $leftover-space: $grid-width - $total-column-width;
-  $los: $leftover-space;
+
 
   @if $feather-gutter-width {
     @return $gutter-width;
