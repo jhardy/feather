@@ -34,12 +34,9 @@ $feather-large-separator: "-";
 $feather-fluid: true !default;
 $feather-max-width: true;
 
-
 // $feather-column-count: 12 !default;
 // $feather-column-width: 60 !default;
 // $feather-gutter-width: 20 !default;
-
-
 
 $feather-grid-width: 1000 !default;
 $feather-column-width: 60 !default;
@@ -51,6 +48,8 @@ $feather-grid: $feather-grid-width, $feather-column-width, $feather-column-count
 
 @function calculate-gutter($grid-width: $feather-grid-width, $column-width: $feather-column-width, $column-count: $feather-column-count, $gutter-width: $feather-gutter-width) {
 
+  $total-column-width: $column-width * $column-count;
+  $leftover-space: $grid-width - $total-column-width;
 
   @if $feather-gutter-width {
     @return $gutter-width;
@@ -65,11 +64,6 @@ $feather-gutter-width: calculate-gutter();
 
 $feather-grid-unit: $feather-column-width + $feather-gutter-width !default;
 
-#test {
-  total-column-width: $tcw;
-  leftover-space: $los;
-  gutter-width: $feather-gutter-width;
-}
 
 // Full width of grid based on parameters above
 $feather-full-grid: $feather-grid-unit * $feather-column-count;
@@ -112,7 +106,8 @@ $feather-default-float: left !default;
 
 @mixin center() {
   float: none;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 
