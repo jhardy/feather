@@ -4,6 +4,8 @@
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 
 /* apply a natural box layout model to all elements */
+
+
 * { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
 
 $feather-screen-small: 786px !default;
@@ -29,7 +31,6 @@ $feather-prefix-large: "lg";
 $feather-large-separator: "-";
 
 
-
 /* Type of grid, true false */
 $feather-fluid: true !default;
 $feather-max-width: true;
@@ -44,8 +45,13 @@ $feather-column-count: 12 !default;
 $feather-gutter-width: false !default;
 
 
+
 $feather-grid: $feather-grid-width, $feather-column-width, $feather-column-count, $feather-gutter-width;
 
+
+@function number-to-word($number) {
+
+}
 @function calculate-gutter($grid-width: $feather-grid-width, $column-width: $feather-column-width, $column-count: $feather-column-count, $gutter-width: $feather-gutter-width) {
 
   $total-column-width: $column-width * $column-count;
@@ -84,7 +90,7 @@ $feather-default-float: left !default;
     @return percentage($number / $context);
   }
   @else {
-    @return unquote($number + "px");
+    @return unquote(($number / $context) + "px");
   }
 }
 
@@ -225,3 +231,56 @@ $feather-default-float: left !default;
     border: 1px solid darken(#fff, 20%);
   }
 }
+
+
+@mixin create-grid-classes($columns, $namespace, $grid-seperator) {
+
+  .#{$namespace}full {}
+  .#{$namespace}half {}
+
+  @include create-grid-ratios(1, 3, $namespace, $grid-seperator);
+  @include create-grid-ratios(1, 4, $namespace, $grid-seperator);
+  @include create-grid-ratios(1, 5, $namespace, $grid-seperator);
+  @include create-grid-ratios(1, 6, $namespace, $grid-seperator);
+  @include create-grid-ratios(1, 10, $namespace, $grid-seperator);
+
+  @if $columns  > 12 {
+     @include create-grid-ratios(1, 12, $namespace, $grid-seperator);
+  }
+
+  @include create-grid-ratios(1, $columns, $namespace, $grid-seperator);
+
+}
+
+
+@mixin create-grid-ratios($start, $end, $namespace, $grid-seperator) {
+  @for $a from $start to $end {
+
+  $value: ($feather-grid-unit * ($a/$end));
+
+
+    .#{$namespace}#{$a}#{$grid-seperator}#{$end} {
+      width: percentage($a/$end);
+    }
+
+  }
+}
+
+@include create-grid-classes(12, "g-", "-");
+
+
+.grid-wrap {
+  width: 1000px;
+  clear: both;
+  margin-left: -unit($feather-gutter-width);
+}
+
+.grid {
+  float: left;
+  padding-left: unit($feather-gutter-width);
+}
+
+.grid p {
+  background: red;
+}
+
