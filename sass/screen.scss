@@ -264,13 +264,12 @@ $desk-grid-ratios: (3, 4, 5, 6, 10);
 
 
 @mixin create-grid-ratios($start, $end, $namespace, $grid-seperator) {
-  @for $a from $start to $end {
+  @for $i from $start to $end {
 
-  $value: ($feather-grid-unit * ($a/$end));
+  $value: ($feather-grid-unit * ($i/$end));
 
-
-    .#{$namespace}#{$a}#{$grid-seperator}#{$end} {
-      width: percentage($a/$end);
+    .#{$namespace}#{$i}#{$grid-seperator}#{$end} {
+      width: percentage($i/$end);
     }
 
   }
