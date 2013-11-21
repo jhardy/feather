@@ -272,7 +272,7 @@ $feather-default-float: left !default;
 .grid-wrap {
   width: 1000px;
   clear: both;
-  margin-left: -unit($feather-gutter-width);
+  margin-left: unit($feather-gutter-width) * -1;
 }
 
 .grid {
