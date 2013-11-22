@@ -1,0 +1,220 @@
+
+
+$feather-screen-small: 786px !default;
+$feather-screen-medium: 992px !default;
+$feather-screen-large: 1200px !default;
+
+// The name for your prefix.
+$feather-prefix: "span" !default;
+
+// Separator name.
+$feather-separator: "-" !default;
+
+// The name for your small size prefix
+$feather-prefix-small: "sm";
+$feather-small-separator: "-";
+
+// Name for your medium size prefix
+$feather-prefix-med: "med";
+$feather-med-separator: "-";
+
+// Name for your large size prefix
+$feather-prefix-large: "lg";
+$feather-large-separator: "-";
+
+
+/* Type of grid, true false */
+$feather-fluid: true !default;
+$feather-max-width: true;
+
+// $feather-column-count: 12 !default;
+// $feather-column-width: 60 !default;
+// $feather-gutter-width: 20 !default;
+
+$feather-grid-width: 1000 !default;
+$feather-column-width: 65 !default;
+$feather-column-count: 12 !default;
+$feather-gutter-width: false !default;
+
+
+
+$feather-grid: $feather-grid-width, $feather-column-width, $feather-column-count, $feather-gutter-width;
+
+
+
+@function calculate-gutter($grid-width: $feather-grid-width, $column-width: $feather-column-width, $column-count: $feather-column-count, $gutter-width: $feather-gutter-width) {
+
+  $total-column-width: $column-width * $column-count;
+  $leftover-space: $grid-width - $total-column-width;
+
+  @if $feather-gutter-width {
+    @return $gutter-width;
+  }
+  @else {
+    @return $leftover-space / ($column-count - 1);
+  }
+}
+
+
+$feather-gutter-width: calculate-gutter();
+$feather-grid-unit: $feather-column-width + $feather-gutter-width !default;
+
+// Full width of grid based on parameters above
+$feather-full-grid: $feather-grid-unit * $feather-column-count;
+
+
+/* Names for push and pull classes */
+$feather-include-offset: true;
+$feather-offset-name: "offset" !default;
+
+$feather-include-pull: true;
+$feather-pull-name: "pull" !default;
+
+$feather-default-float: left !default;
+
+@function unit($number, $context: $feather-full-grid) {
+  @if $feather-fluid {
+    @return percentage($number / $context);
+  }
+  @else {
+    @return unquote(($number / $context) + "px");
+  }
+}
+
+@function grid($count, $context: $feather-full-grid) {
+  $value: ($feather-grid-unit * $count);
+  @return unit($value, $context);
+}
+
+
+@mixin pull($count, $context: $feather-full-grid) {
+  $value: ($feather-grid-unit * $count);
+  margin-left:  unit($value * -1, $context);
+}
+
+@mixin offset($count, $context: $feather-full-grid) {
+  $value: ($feather-grid-unit * $count);
+  margin-left:  unit($value, $context);
+}
+
+@mixin center() {
+  float: none;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+@mixin create-grid($prefix: $feather-prefix, $separator:$feather-separator, $columns: $feather-column-count, $column-width: $feather-column-width, $gutter-width: $feather-gutter-width, $offset: $feather-include-offset, $offset-name: $feather-offset-name, $pull: $feather-include-pull, $pull-name: $feather-pull-name, $default-float: $feather-default-float) {
+
+ @for $i from 1 through $columns {
+    .#{unquote($prefix)}#{unquote($separator)}#{$i} {
+      width: grid($i);
+    }
+  }
+
+  @if $offset {
+    @for $i from 1 through $columns {
+      .#{unquote($offset-name)}-#{$i} {
+        @include offset($i);
+      }
+    }
+  }
+
+  @if $pull {
+    @for $i from 1 through $columns {
+      .#{unquote($pull-name)}-#{$i} {
+        @include pull($i)
+      }
+    }
+  }
+
+  [class*="#{$prefix}#{$separator}"] {
+    @extend %column;
+
+     &.is-parent {
+      @extend %parent-grid;
+    }
+  }
+
+  .container {
+    @extend %container;
+  }
+
+  .centered {
+    @include center();
+  }
+}
+
+%container {
+  margin: 0  auto;
+  width: unit($feather-full-grid);
+  @if $feather-max-width {
+    max-width: $feather-full-grid + px;
+  }
+}
+
+%parent-grid {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+%column {
+  float: $feather-default-float;
+  padding-left: unit($feather-gutter-width/2);
+  padding-right: unit($feather-gutter-width/2);
+}
+
+%one-fourth {
+  width: 25%
+}
+
+%one-third {
+  width: 33.33%;
+}
+
+%one-half {
+  width: 50%;
+}
+
+.col {
+  float: left;
+  background: #ccc;
+  height: 50px;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.third {
+  @extend %column;
+  @extend %one-third;
+}
+
+.fourth {
+  @extend %column;
+  @extend %one-fourth;
+}
+
+.half {
+  @extend %column;
+  @extend %one-half;
+}
+
+.example {
+  background: #eee;
+  color: #333;
+  text-align:  center;
+  padding: 20px 0;
+  margin-bottom: 20px;
+}
+
+@include create-grid;
+
+.prefix,
+.postfix {
+  width: 200px;
+
+  &.span {
+    background: darken(#fff, 5%);
+    border: 1px solid darken(#fff, 20%);
+  }
+}
