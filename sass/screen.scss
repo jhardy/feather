@@ -20,9 +20,9 @@
 }
 
 
-$feather-screen-small: 786px !default;
-$feather-screen-medium: 992px !default;
-$feather-screen-large: 1200px !default;
+$feather-screen-small: 480px !default;
+$feather-screen-medium: 50em !default;
+$feather-screen-large: 57em !default;
 
 
 /* Type of grid, true false */
@@ -114,12 +114,12 @@ $desk-grid-ratios: (3, 4, 5, 6, 10, 12);
 }
 
 @include create-grid-classes($palm-grid-ratios, "palm-", "-");
-@include create-grid-classes($lap-grid-ratios, "lap-", "-");
-@include create-grid-classes($desk-grid-ratios, "desk-", "-");
+
+
 
 
 .main-site {
-  width: 1000px;
+  max-width: 1000px;
   margin: 0 auto;
 }
 .grid-wrap {
@@ -134,5 +134,13 @@ $desk-grid-ratios: (3, 4, 5, 6, 10, 12);
 
 .grid p {
   background: red;
+}
+
+@media screen and (min-width: $feather-screen-medium) {
+  @include create-grid-classes($lap-grid-ratios, "lap-", "-");
+}
+
+@media screen and (min-width: $feather-screen-large)  {
+  @include create-grid-classes($desk-grid-ratios, "desk-", "-");
 }
 
