@@ -20,8 +20,8 @@
 }
 
 
-$feather-screen-small: 480px !default;
-$feather-screen-medium: 50em !default;
+$feather-screen-small: 20em !default;
+$feather-screen-medium: 30em !default;
 $feather-screen-large: 57em !default;
 
 
@@ -102,6 +102,8 @@ $desk-grid-ratios: (3, 4, 5, 6, 10, 12);
 
   $count: nth($ratios, length($ratios));
 
+  //.hide-on-#{$namespace} { display: none; }
+
   .#{$namespace}full { width: 100%; }
   .#{$namespace}half { width: 50%; }
 
@@ -109,7 +111,7 @@ $desk-grid-ratios: (3, 4, 5, 6, 10, 12);
     @include create-grid-ratios(1, $ratio, $namespace, $grid-seperator);
   }
 
-  @include create-grid-ratios(1, $count, $namespace, $grid-seperator);
+  ///@include create-grid-ratios(1, $count, $namespace, $grid-seperator);
 
 }
 
@@ -135,6 +137,23 @@ $desk-grid-ratios: (3, 4, 5, 6, 10, 12);
 .grid p {
   background: red;
 }
+
+.grid-wrap-inline {
+  margin-left: unit(-$feather-gutter-width);
+  font-size: 0;
+}
+
+.grid-inline {
+  display: inline-block;
+  width: 100%;
+  padding-left: unit($feather-gutter-width);
+  font-size: 16px;
+}
+
+.grid-inline p {
+  background: red;
+}
+
 
 
 @include create-grid-classes($palm-grid-ratios, "palm-", "-");

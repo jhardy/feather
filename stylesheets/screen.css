@@ -24,12 +24,53 @@
 
 /* Type of grid, true false */
 /* Names for push and pull classes */
-/* line 105, ../sass/screen.scss */
+/* line 123, ../sass/screen.scss */
+.main-site {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* line 127, ../sass/screen.scss */
+.grid-wrap {
+  margin-left: -1.96078%;
+}
+
+/* line 132, ../sass/screen.scss */
+.grid {
+  float: left;
+  padding-left: 1.96078%;
+}
+
+/* line 137, ../sass/screen.scss */
+.grid p {
+  background: red;
+}
+
+/* line 141, ../sass/screen.scss */
+.grid-wrap-inline {
+  margin-left: -1.96078%;
+  font-size: 0;
+}
+
+/* line 146, ../sass/screen.scss */
+.grid-inline {
+  display: inline-block;
+  width: 100%;
+  padding-left: 1.96078%;
+  font-size: 16px;
+}
+
+/* line 153, ../sass/screen.scss */
+.grid-inline p {
+  background: red;
+}
+
+/* line 107, ../sass/screen.scss */
 .palm-full {
   width: 100%;
 }
 
-/* line 106, ../sass/screen.scss */
+/* line 108, ../sass/screen.scss */
 .palm-half {
   width: 50%;
 }
@@ -59,50 +100,13 @@
   width: 75%;
 }
 
-/* line 95, ../sass/screen.scss */
-.palm-1-4 {
-  width: 25%;
-}
-
-/* line 95, ../sass/screen.scss */
-.palm-2-4 {
-  width: 50%;
-}
-
-/* line 95, ../sass/screen.scss */
-.palm-3-4 {
-  width: 75%;
-}
-
-/* line 121, ../sass/screen.scss */
-.main-site {
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-/* line 125, ../sass/screen.scss */
-.grid-wrap {
-  margin-left: -1.96078%;
-}
-
-/* line 130, ../sass/screen.scss */
-.grid {
-  float: left;
-  padding-left: 1.96078%;
-}
-
-/* line 135, ../sass/screen.scss */
-.grid p {
-  background: red;
-}
-
-@media screen and (min-width: 50em) {
-  /* line 105, ../sass/screen.scss */
+@media screen and (min-width: 30em) {
+  /* line 107, ../sass/screen.scss */
   .lap-full {
     width: 100%;
   }
 
-  /* line 106, ../sass/screen.scss */
+  /* line 108, ../sass/screen.scss */
   .lap-half {
     width: 50%;
   }
@@ -176,39 +180,14 @@
   .lap-5-6 {
     width: 83.33333%;
   }
-
-  /* line 95, ../sass/screen.scss */
-  .lap-1-6 {
-    width: 16.66667%;
-  }
-
-  /* line 95, ../sass/screen.scss */
-  .lap-2-6 {
-    width: 33.33333%;
-  }
-
-  /* line 95, ../sass/screen.scss */
-  .lap-3-6 {
-    width: 50%;
-  }
-
-  /* line 95, ../sass/screen.scss */
-  .lap-4-6 {
-    width: 66.66667%;
-  }
-
-  /* line 95, ../sass/screen.scss */
-  .lap-5-6 {
-    width: 83.33333%;
-  }
 }
 @media screen and (min-width: 57em) {
-  /* line 105, ../sass/screen.scss */
+  /* line 107, ../sass/screen.scss */
   .desk-full {
     width: 100%;
   }
 
-  /* line 106, ../sass/screen.scss */
+  /* line 108, ../sass/screen.scss */
   .desk-half {
     width: 50%;
   }
@@ -326,61 +305,6 @@
   /* line 95, ../sass/screen.scss */
   .desk-9-10 {
     width: 90%;
-  }
-
-  /* line 95, ../sass/screen.scss */
-  .desk-1-12 {
-    width: 8.33333%;
-  }
-
-  /* line 95, ../sass/screen.scss */
-  .desk-2-12 {
-    width: 16.66667%;
-  }
-
-  /* line 95, ../sass/screen.scss */
-  .desk-3-12 {
-    width: 25%;
-  }
-
-  /* line 95, ../sass/screen.scss */
-  .desk-4-12 {
-    width: 33.33333%;
-  }
-
-  /* line 95, ../sass/screen.scss */
-  .desk-5-12 {
-    width: 41.66667%;
-  }
-
-  /* line 95, ../sass/screen.scss */
-  .desk-6-12 {
-    width: 50%;
-  }
-
-  /* line 95, ../sass/screen.scss */
-  .desk-7-12 {
-    width: 58.33333%;
-  }
-
-  /* line 95, ../sass/screen.scss */
-  .desk-8-12 {
-    width: 66.66667%;
-  }
-
-  /* line 95, ../sass/screen.scss */
-  .desk-9-12 {
-    width: 75%;
-  }
-
-  /* line 95, ../sass/screen.scss */
-  .desk-10-12 {
-    width: 83.33333%;
-  }
-
-  /* line 95, ../sass/screen.scss */
-  .desk-11-12 {
-    width: 91.66667%;
   }
 
   /* line 95, ../sass/screen.scss */
