@@ -24,35 +24,35 @@
 
 /* Type of grid, true false */
 /* Names for push and pull classes */
-/* line 123, ../sass/screen.scss */
+/* line 121, ../sass/screen.scss */
 .main-site {
   max-width: 1000px;
   margin: 0 auto;
 }
 
-/* line 127, ../sass/screen.scss */
+/* line 125, ../sass/screen.scss */
 .grid-wrap {
   margin-left: -1.96078%;
 }
 
-/* line 132, ../sass/screen.scss */
+/* line 130, ../sass/screen.scss */
 .grid {
   float: left;
   padding-left: 1.96078%;
 }
 
-/* line 137, ../sass/screen.scss */
+/* line 135, ../sass/screen.scss */
 .grid p {
   background: red;
 }
 
-/* line 141, ../sass/screen.scss */
+/* line 139, ../sass/screen.scss */
 .grid-wrap-inline {
   margin-left: -1.96078%;
   font-size: 0;
 }
 
-/* line 146, ../sass/screen.scss */
+/* line 144, ../sass/screen.scss */
 .grid-inline {
   display: inline-block;
   width: 100%;
@@ -60,7 +60,7 @@
   font-size: 16px;
 }
 
-/* line 153, ../sass/screen.scss */
+/* line 151, ../sass/screen.scss */
 .grid-inline p {
   background: red;
 }

@@ -87,35 +87,33 @@ $palm-grid-ratios: (3, 4);
 $lap-grid-ratios:  (3, 4, 5, 6);
 $desk-grid-ratios: (3, 4, 5, 6, 10, 12);
 
-@mixin create-grid-ratios($start, $end, $namespace, $grid-seperator) {
+@mixin create-grid-ratios($start, $end, $namespace, $namespace-seprator, $grid-seperator) {
   @for $i from $start to $end {
 
   $value: ($feather-grid-unit * ($i/$end));
 
-    .#{$namespace}#{$i}#{$grid-seperator}#{$end} {
+    .#{$namespace}#{$namespace-seprator}#{$i}#{$grid-seperator}#{$end} {
       width: percentage($i/$end);
     }
   }
 }
 
-@mixin create-grid-classes($ratios, $namespace, $grid-seperator) {
+@mixin create-grid-classes($ratios, $namespace, $namespace-seprator, $grid-seperator) {
 
   $count: nth($ratios, length($ratios));
 
   //.hide-on-#{$namespace} { display: none; }
 
-  .#{$namespace}full { width: 100%; }
-  .#{$namespace}half { width: 50%; }
+  .#{$namespace}#{$namespace-seprator}full { width: 100%; }
+  .#{$namespace}#{$namespace-seprator}half { width: 50%; }
 
   @each $ratio in $ratios {
-    @include create-grid-ratios(1, $ratio, $namespace, $grid-seperator);
+    @include create-grid-ratios(1, $ratio, $namespace, $namespace-seprator, $grid-seperator);
   }
 
   ///@include create-grid-ratios(1, $count, $namespace, $grid-seperator);
 
 }
-
-
 
 
 
@@ -155,15 +153,13 @@ $desk-grid-ratios: (3, 4, 5, 6, 10, 12);
 }
 
 
-
-@include create-grid-classes($palm-grid-ratios, "palm-", "-");
-
+@include create-grid-classes($palm-grid-ratios, "palm", "-", "-");
 
 @media screen and (min-width: $feather-screen-medium) {
-  @include create-grid-classes($lap-grid-ratios, "lap-", "-");
+  @include create-grid-classes($lap-grid-ratios, "lap", "-", "-");
 }
 
 @media screen and (min-width: $feather-screen-large)  {
-  @include create-grid-classes($desk-grid-ratios, "desk-", "-");
+  @include create-grid-classes($desk-grid-ratios, "desk", "-", "-");
 }
 
