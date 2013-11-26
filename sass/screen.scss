@@ -26,8 +26,8 @@ $feather-screen-large: 57em !default;
 
 
 /* Type of grid, true false */
-$feather-fluid: true !default;
-$feather-max-width: true !default;
+// $feather-fluid: true !default;
+// $feather-max-width: true !default;
 
 // $feather-column-count: 12 !default;
 // $feather-column-width: 60 !default;
@@ -65,22 +65,17 @@ $feather-full-grid: $feather-grid-unit * $feather-column-count;
 
 
 /* Names for push and pull classes */
-$feather-include-offset: true;
-$feather-offset-name: "offset" !default;
+// $feather-include-offset: true;
+// $feather-offset-name: "offset" !default;
 
-$feather-include-pull: true;
-$feather-pull-name: "pull" !default;
+// $feather-include-pull: true;
+// $feather-pull-name: "pull" !default;
 
-$feather-default-float: left !default;
+// $feather-default-float: left !default;
 
 
 @function unit($number, $context: $feather-full-grid) {
-  @if $feather-fluid {
-    @return percentage($number / $context);
-  }
-  @else {
-    @return unquote(($number / $context) + "px");
-  }
+   @return percentage($number / $context);
 }
 
 $palm-grid-ratios: (3, 4);
@@ -93,7 +88,7 @@ $desk-grid-ratios: (3, 4, 5, 6, 10, 12);
   $value: ($feather-grid-unit * ($i/$end));
 
     .#{$namespace}#{$namespace-seprator}#{$i}#{$grid-seperator}#{$end} {
-      width: percentage($i/$end);
+      width: unit($i, $end);
     }
   }
 }
@@ -114,9 +109,6 @@ $desk-grid-ratios: (3, 4, 5, 6, 10, 12);
   ///@include create-grid-ratios(1, $count, $namespace, $grid-seperator);
 
 }
-
-
-
 
 .main-site {
   max-width: 1000px;
