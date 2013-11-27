@@ -134,11 +134,10 @@ $desk-grid-ratios: (3, 4, 5, 6, 10, 12);
 }
 
 .grid-inline {
-
+  display: inline-block;
   width: 100%;
   padding-left: unit($feather-gutter-width);
   font-size: 16px;
-  display: inline-block;
   zoom: 1;
   *display: inline;
 }
