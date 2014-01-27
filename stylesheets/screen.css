@@ -54,15 +54,15 @@
 
 /* line 136, ../sass/screen.scss */
 .grid-inline {
+  display: inline-block;
   width: 100%;
   padding-left: 1.96078%;
   font-size: 16px;
-  display: inline-block;
   zoom: 1;
   *display: inline;
 }
 
-/* line 146, ../sass/screen.scss */
+/* line 145, ../sass/screen.scss */
 .grid-inline p {
   background: red;
 }
