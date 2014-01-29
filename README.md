@@ -1,5 +1,4 @@
 feather
 =======
 
-TODO:
-- Create a Photoshop plugin.
+Rough and experimental grid system
