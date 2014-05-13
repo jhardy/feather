@@ -1,13 +1,3 @@
-/* Welcome to Compass.
- * In this file you should write your main styles. (or centralize your imports)
- * Import this file using the following HTML or equivalent:
- * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
-
-/* apply a natural box layout model to all elements */
-
-
-* { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
-
 %cf {
   &:before, &:after {
     content: " "; /* 1 */
@@ -21,8 +11,9 @@
 
 
 $feather-screen-small: 20em !default;
-$feather-screen-medium: 30em !default;
-$feather-screen-large: 57em !default;
+$feather-screen-medium: 38em !default;
+$feather-sceen-med-large: 58em !default;
+$feather-screen-large: 60em !default;
 
 
 /* Type of grid, true false */
@@ -33,9 +24,9 @@ $feather-screen-large: 57em !default;
 // $feather-column-width: 60 !default;
 // $feather-gutter-width: 20 !default;
 
-$feather-grid-width: 1000 !default;
-$feather-column-width: 65 !default;
-$feather-column-count: 12 !default;
+$feather-grid-width: 1200 !default;
+$feather-column-width: 58 !default;
+$feather-column-count: 18 !default;
 $feather-gutter-width: false !default;
 
 
@@ -56,7 +47,7 @@ $feather-grid: $feather-grid-width, $feather-column-width, $feather-column-count
 }
 
 
-$feather-gutter-width: calculate-gutter();
+$feather-gutter-width: calculate-gutter() !global;
 $feather-grid-unit: $feather-column-width + $feather-gutter-width !default;
 
 
@@ -79,15 +70,16 @@ $feather-full-grid: $feather-grid-unit * $feather-column-count;
 }
 
 $palm-grid-ratios: (3, 4);
-$lap-grid-ratios:  (3, 4, 5, 6);
-$desk-grid-ratios: (3, 4, 5, 6, 10, 12);
+$lap-grid-ratios:  (3, 4, 8);
+$med-desk-grid-ratios:  (3);
+$desk-grid-ratios: (3, 4, 14, 16, 18);
 
 @mixin create-grid-ratios($start, $end, $namespace, $namespace-seprator, $grid-seperator) {
   @for $i from $start to $end {
 
   $value: ($feather-grid-unit * ($i/$end));
 
-    .#{$namespace}#{$namespace-seprator}#{$i}#{$grid-seperator}#{$end} {
+    [data-grid-#{$namespace}="#{$i}#{$grid-seperator}#{$end}"] {
       width: unit($i, $end);
     }
   }
@@ -99,8 +91,8 @@ $desk-grid-ratios: (3, 4, 5, 6, 10, 12);
 
   //.hide-on-#{$namespace} { display: none; }
 
-  .#{$namespace}#{$namespace-seprator}full { width: 100%; }
-  .#{$namespace}#{$namespace-seprator}half { width: 50%; }
+  [data-grid-#{$namespace}="full"] { width: 100%; }
+  [data-grid-#{$namespace}="half"] { width: 50%; }
 
   @each $ratio in $ratios {
     @include create-grid-ratios(1, $ratio, $namespace, $namespace-seprator, $grid-seperator);
@@ -110,50 +102,36 @@ $desk-grid-ratios: (3, 4, 5, 6, 10, 12);
 
 }
 
-.main-site {
-  max-width: 1000px;
-  margin: 0 auto;
-}
-.grid-wrap {
+[data-grid-wrap] {
   margin-left: unit(-$feather-gutter-width);
   @extend %cf;
+
+  [data-grid-wrap] {
+    margin-left: 0;
+  }
 }
 
-.grid {
-  float: left;
-  padding-left: unit($feather-gutter-width);
-}
-
-.grid p {
-  background: red;
-}
-
-.grid-wrap-inline {
-  margin-left: unit(-$feather-gutter-width);
-  font-size: 0;
-}
-
-.grid-inline {
-  display: inline-block;
+[data-grid-item] {
   width: 100%;
   padding-left: unit($feather-gutter-width);
-  font-size: 16px;
-  zoom: 1;
-  *display: inline;
-}
-
-.grid-inline p {
-  background: red;
 }
 
 
 @include create-grid-classes($palm-grid-ratios, "palm", "-", "-");
 
+
+
 @media screen and (min-width: $feather-screen-medium) {
+  [data-grid-item] {
+    float: left;
+  }
   @include create-grid-classes($lap-grid-ratios, "lap", "-", "-");
+}
+
+@media screen and (min-width: $feather-sceen-med-large)  {
+  @include create-grid-classes($med-desk-grid-ratios, "med-desk", "-", "-");
 }
 
 @media screen and (min-width: $feather-screen-large)  {
   @include create-grid-classes($desk-grid-ratios, "desk", "-", "-");
 }
-
