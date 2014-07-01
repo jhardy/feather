@@ -1,50 +1,70 @@
-/* Welcome to Compass.
- * In this file you should write your main styles. (or centralize your imports)
- * Import this file using the following HTML or equivalent:
- * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+%cf {
+  &:before, &:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+  }
 
-/* apply a natural box layout model to all elements */
-* { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+  &:after {
+    clear: both;
+  }
+}
 
-$feather-screen-small: 786px !default;
-$feather-screen-medium: 992px !default;
-$feather-screen-large: 1200px !default;
 
-// The name for your prefix.
-$feather-prefix: "span" !default;
 
-// Separator name.
-$feather-separator: "-" !default;
 
-// The name for your small size prefix
-$feather-prefix-small: "sm";
-$feather-small-separator: "-";
+$feather-screen-small: 20em !default;
+$feather-screen-medium: 38em !default;
+$feather-screen-large: 60em !default;
 
-// Name for your medium size prefix
-$feather-prefix-med: "med";
-$feather-med-separator: "-";
+$namespace-seprator: "-" !default;
+$grid-seperator: "-" !default;
 
-// Name for your large size prefix
-$feather-prefix-large: "lg";
-$feather-large-separator: "-";
+$feather-settings: (
+  palm : (
+      ratios: (3, 4),
+      breakpoint: 20em
+  ),
+
+  lap : (
+    ratios : (3, 4, 8, 9, 12),
+    breakpoint: 40em
+  ),
+
+  desk: (
+    ratios: (3, 4, 9, 12),
+    breakpoint: 60em
+  )
+);
+
+
+@mixin bp($point, $type: min-width) {
+  @media screen and ($type: map-get(map-get($feather-settings, $point), breakpoint)) {
+    @content;
+  }
+}
+
+
+
+
 
 
 
 /* Type of grid, true false */
-$feather-fluid: true !default;
-$feather-max-width: true;
+// $feather-fluid: true !default;
+// $feather-max-width: true !default;
 
 // $feather-column-count: 12 !default;
 // $feather-column-width: 60 !default;
 // $feather-gutter-width: 20 !default;
 
-$feather-grid-width: 1000 !default;
-$feather-column-width: 60 !default;
+$feather-grid-width: 980 !default;
+$feather-column-width: 78 !default;
 $feather-column-count: 12 !default;
 $feather-gutter-width: false !default;
 
 
 $feather-grid: $feather-grid-width, $feather-column-width, $feather-column-count, $feather-gutter-width;
+
 
 @function calculate-gutter($grid-width: $feather-grid-width, $column-width: $feather-column-width, $column-count: $feather-column-count, $gutter-width: $feather-gutter-width) {
 
@@ -59,9 +79,14 @@ $feather-grid: $feather-grid-width, $feather-column-width, $feather-column-count
   }
 }
 
+#test {
+  width: map-get(map-get($feather-settings, palm), breakpoint)
+}
 
-$feather-gutter-width: calculate-gutter();
 
+
+
+$feather-gutter-width: calculate-gutter() !global;
 $feather-grid-unit: $feather-column-width + $feather-gutter-width !default;
 
 
@@ -70,158 +95,102 @@ $feather-full-grid: $feather-grid-unit * $feather-column-count;
 
 
 /* Names for push and pull classes */
-$feather-include-offset: true;
-$feather-offset-name: "offset" !default;
+// $feather-include-offset: true;
+// $feather-offset-name: "offset" !default;
 
-$feather-include-pull: true;
-$feather-pull-name: "pull" !default;
+// $feather-include-pull: true;
+// $feather-pull-name: "pull" !default;
 
-$feather-default-float: left !default;
+// $feather-default-float: left !default;
 
 
 @function unit($number, $context: $feather-full-grid) {
-  @if $feather-fluid {
-    @return percentage($number / $context);
+   @return percentage($number / $context);
+}
+
+$palm-grid-ratios: (3, 4);
+$lap-grid-ratios:  (3, 4, 8);
+$desk-grid-ratios: (3, 4, 14, 16);
+
+
+@mixin new-grid-creator() {
+  @each $item in $feather-settings {
+    //$test : map-get(nth($item, 1), ratios);
+    //@warn "#{$test}";
+
+    @media screen and (min-width: map-get(nth($item, 2), breakpoint)) {
+      @include create-grid-classes(map-get(nth($item, 2), ratios), nth($item, 1), "-", "-");
+      //@include create-grid-classes(map-get(nth($item, 2), ratios), map-get($item, 1), "-", "-")
+    }
+    //width: map-get(map-get($feather-settings, $item), breakpoint);
+      //width: map-get($i, breakpoint);
+
+
+
   }
-  @else {
-    @return unquote($number + "px");
-  }
 }
 
-@function grid($count, $context: $feather-full-grid) {
-  $value: ($feather-grid-unit * $count);
-  @return unit($value, $context);
-}
+@mixin create-grid-ratios($start, $end, $namespace, $namespace-seprator, $grid-seperator) {
+  @for $i from $start to $end {
 
+  $value: ($feather-grid-unit * ($i/$end));
 
-@mixin pull($count, $context: $feather-full-grid) {
-  $value: ($feather-grid-unit * $count);
-  margin-left:  unit($value * -1, $context);
-}
-
-@mixin offset($count, $context: $feather-full-grid) {
-  $value: ($feather-grid-unit * $count);
-  margin-left:  unit($value, $context);
-}
-
-@mixin center() {
-  float: none;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-
-@mixin create-grid($prefix: $feather-prefix, $separator:$feather-separator, $columns: $feather-column-count, $column-width: $feather-column-width, $gutter-width: $feather-gutter-width, $offset: $feather-include-offset, $offset-name: $feather-offset-name, $pull: $feather-include-pull, $pull-name: $feather-pull-name, $default-float: $feather-default-float) {
-
- @for $i from 1 through $columns {
-    .#{unquote($prefix)}#{unquote($separator)}#{$i} {
-      width: grid($i);
+    [data-grid-#{$namespace}="#{$i}#{$grid-seperator}#{$end}"] {
+      width: unit($i, $end);
     }
   }
+}
 
-  @if $offset {
-    @for $i from 1 through $columns {
-      .#{unquote($offset-name)}-#{$i} {
-        @include offset($i);
-      }
-    }
+@mixin create-grid-classes($ratios, $namespace, $namespace-seprator, $grid-seperator) {
+
+  $count: nth($ratios, length($ratios));
+
+  //.hide-on-#{$namespace} { display: none; }
+
+  [data-grid-#{$namespace}="full"] { width: 100%; }
+  [data-grid-#{$namespace}="half"] { width: 50%; }
+
+  @each $ratio in $ratios {
+    @include create-grid-ratios(1, $ratio, $namespace, $namespace-seprator, $grid-seperator);
   }
 
-  @if $pull {
-    @for $i from 1 through $columns {
-      .#{unquote($pull-name)}-#{$i} {
-        @include pull($i)
-      }
-    }
-  }
+  ///@include create-grid-ratios(1, $count, $namespace, $grid-seperator);
 
-  [class*="#{$prefix}#{$separator}"] {
-    @extend %column;
+}
 
-     &.is-parent {
-      @extend %parent-grid;
-    }
-  }
+[data-grid-wrap] {
+  margin-left: unit(-$feather-gutter-width);
+  @extend %cf;
 
-  .container {
-    @extend %container;
-  }
-
-  .centered {
-    @include center();
+  [data-grid-wrap] {
+    margin-left: 0;
   }
 }
 
-%container {
-  margin: 0  auto;
-  width: unit($feather-full-grid);
-  @if $feather-max-width {
-    max-width: $feather-full-grid + px;
-  }
-}
-
-%parent-grid {
-  padding-left: 0;
-  padding-right: 0;
-}
-
-%column {
-  float: $feather-default-float;
-  padding-left: unit($feather-gutter-width/2);
-  padding-right: unit($feather-gutter-width/2);
-}
-
-%one-fourth {
-  width: 25%
-}
-
-%one-third {
-  width: 33.33%;
-}
-
-%one-half {
-  width: 50%;
-}
-
-.col {
+[data-grid-item] {
   float: left;
-  background: #ccc;
-  height: 50px;
-  border-radius: 4px;
-  text-align: center;
+  width: 100%;
+  padding-left: unit($feather-gutter-width);
 }
 
-.third {
-  @extend %column;
-  @extend %one-third;
-}
 
-.fourth {
-  @extend %column;
-  @extend %one-fourth;
-}
 
-.half {
-  @extend %column;
-  @extend %one-half;
-}
 
-.example {
-  background: #eee;
-  color: #333;
-  text-align:  center;
-  padding: 20px 0;
-  margin-bottom: 20px;
-}
+// @include create-grid-classes($palm-grid-ratios, "palm", "-", "-");
 
-@include create-grid;
 
-.prefix,
-.postfix {
-  width: 200px;
 
-  &.span {
-    background: darken(#fff, 5%);
-    border: 1px solid darken(#fff, 20%);
-  }
-}
+// @media screen and (min-width: $feather-screen-medium) {
+//   [data-grid-item] {
+//     float: left;
+//   }
+//   @include create-grid-classes($lap-grid-ratios, "lap", "-", "-");
+// }
+
+// @media screen and (min-width: $feather-sceen-med-large)  {
+//   @include create-grid-classes($med-desk-grid-ratios, "med-desk", "-", "-");
+// }
+
+// @media screen and (min-width: $feather-screen-large)  {
+//   @include create-grid-classes($desk-grid-ratios, "desk", "-", "-");
+//}
