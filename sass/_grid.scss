@@ -38,13 +38,6 @@ $feather-settings: (
 );
 
 
-@mixin bp($point, $type: min-width) {
-  @media screen and ($type: map-get(map-get($feather-settings, $point), breakpoint)) {
-    @content;
-  }
-}
-
-
 
 
 //$feather-grid: $feather-grid-width, $feather-column-width, $feather-column-count, $feather-gutter-width;
@@ -62,8 +55,6 @@ $feather-settings: (
     @return $leftover-space / ($column-count - 1);
   }
 }
-
-
 
 
 $feather-gutter-width: calculate-gutter() !global;
@@ -87,10 +78,6 @@ $feather-full-grid: $feather-grid-unit * $feather-column-count;
 @function unit($number, $context: $feather-full-grid) {
    @return percentage($number / $context);
 }
-
-$palm-grid-ratios: (3, 4);
-$lap-grid-ratios:  (3, 4, 8);
-$desk-grid-ratios: (3, 4, 14, 16);
 
 
 @mixin create-grid() {
@@ -141,4 +128,10 @@ $desk-grid-ratios: (3, 4, 14, 16);
     @include create-grid-ratios(1, $ratio, $namespace, $namespace-seprator, $grid-seperator);
   }
 
+}
+
+@mixin bp($point, $type: min-width) {
+  @media screen and ($type: map-get(map-get($feather-settings, $point), breakpoint)) {
+    @content;
+  }
 }
