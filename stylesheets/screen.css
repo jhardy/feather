@@ -19,16 +19,16 @@
   box-sizing: border-box;
 }
 
-/* line 98, ../sass/_grid.scss */
+/* line 83, ../sass/_grid.scss */
 .grid-wrap {
   margin-left: -0.4065%;
 }
-/* line 101, ../sass/_grid.scss */
+/* line 86, ../sass/_grid.scss */
 .grid-wrap .grid-wrap {
   margin-left: 0;
 }
 
-/* line 106, ../sass/_grid.scss */
+/* line 91, ../sass/_grid.scss */
 .grid-item {
   float: left;
   width: 100%;
@@ -36,320 +36,384 @@
 }
 
 @media screen and (min-width: 20em) {
-  /* line 137, ../sass/_grid.scss */
+  /* line 122, ../sass/_grid.scss */
   .palm-full {
     width: 100%;
   }
 
-  /* line 138, ../sass/_grid.scss */
+  /* line 123, ../sass/_grid.scss */
   .palm-half {
     width: 50%;
   }
 
-  /* line 128, ../sass/_grid.scss */
+  /* line 113, ../sass/_grid.scss */
   .palm-1-3 {
     width: 33.33333%;
   }
 
-  /* line 128, ../sass/_grid.scss */
+  /* line 113, ../sass/_grid.scss */
   .palm-2-3 {
     width: 66.66667%;
   }
 
-  /* line 128, ../sass/_grid.scss */
+  /* line 113, ../sass/_grid.scss */
   .palm-1-4 {
     width: 25%;
   }
 
-  /* line 128, ../sass/_grid.scss */
+  /* line 113, ../sass/_grid.scss */
   .palm-2-4 {
     width: 50%;
   }
 
-  /* line 128, ../sass/_grid.scss */
+  /* line 113, ../sass/_grid.scss */
   .palm-3-4 {
     width: 75%;
   }
 }
 @media screen and (min-width: 40em) {
-  /* line 137, ../sass/_grid.scss */
+  /* line 122, ../sass/_grid.scss */
   .lap-full {
     width: 100%;
   }
 
-  /* line 138, ../sass/_grid.scss */
+  /* line 123, ../sass/_grid.scss */
   .lap-half {
     width: 50%;
   }
 
-  /* line 128, ../sass/_grid.scss */
+  /* line 113, ../sass/_grid.scss */
   .lap-1-3 {
     width: 33.33333%;
   }
 
-  /* line 128, ../sass/_grid.scss */
+  /* line 113, ../sass/_grid.scss */
   .lap-2-3 {
     width: 66.66667%;
   }
 
-  /* line 128, ../sass/_grid.scss */
+  /* line 113, ../sass/_grid.scss */
   .lap-1-4 {
     width: 25%;
   }
 
-  /* line 128, ../sass/_grid.scss */
+  /* line 113, ../sass/_grid.scss */
   .lap-2-4 {
     width: 50%;
   }
 
-  /* line 128, ../sass/_grid.scss */
+  /* line 113, ../sass/_grid.scss */
   .lap-3-4 {
     width: 75%;
   }
 
-  /* line 128, ../sass/_grid.scss */
+  /* line 113, ../sass/_grid.scss */
   .lap-1-8 {
     width: 12.5%;
   }
 
-  /* line 128, ../sass/_grid.scss */
+  /* line 113, ../sass/_grid.scss */
   .lap-2-8 {
     width: 25%;
   }
 
-  /* line 128, ../sass/_grid.scss */
+  /* line 113, ../sass/_grid.scss */
   .lap-3-8 {
     width: 37.5%;
   }
 
-  /* line 128, ../sass/_grid.scss */
+  /* line 113, ../sass/_grid.scss */
   .lap-4-8 {
     width: 50%;
   }
 
-  /* line 128, ../sass/_grid.scss */
+  /* line 113, ../sass/_grid.scss */
   .lap-5-8 {
     width: 62.5%;
   }
 
-  /* line 128, ../sass/_grid.scss */
+  /* line 113, ../sass/_grid.scss */
   .lap-6-8 {
     width: 75%;
   }
 
-  /* line 128, ../sass/_grid.scss */
+  /* line 113, ../sass/_grid.scss */
   .lap-7-8 {
     width: 87.5%;
   }
 
-  /* line 128, ../sass/_grid.scss */
+  /* line 113, ../sass/_grid.scss */
   .lap-1-9 {
     width: 11.11111%;
   }
 
-  /* line 128, ../sass/_grid.scss */
+  /* line 113, ../sass/_grid.scss */
   .lap-2-9 {
     width: 22.22222%;
   }
 
-  /* line 128, ../sass/_grid.scss */
+  /* line 113, ../sass/_grid.scss */
   .lap-3-9 {
     width: 33.33333%;
   }
 
-  /* line 128, ../sass/_grid.scss */
+  /* line 113, ../sass/_grid.scss */
   .lap-4-9 {
     width: 44.44444%;
   }
 
-  /* line 128, ../sass/_grid.scss */
+  /* line 113, ../sass/_grid.scss */
   .lap-5-9 {
     width: 55.55556%;
   }
 
-  /* line 128, ../sass/_grid.scss */
+  /* line 113, ../sass/_grid.scss */
   .lap-6-9 {
     width: 66.66667%;
   }
 
-  /* line 128, ../sass/_grid.scss */
+  /* line 113, ../sass/_grid.scss */
   .lap-7-9 {
     width: 77.77778%;
   }
 
-  /* line 128, ../sass/_grid.scss */
+  /* line 113, ../sass/_grid.scss */
   .lap-8-9 {
     width: 88.88889%;
   }
 
-  /* line 128, ../sass/_grid.scss */
+  /* line 113, ../sass/_grid.scss */
   .lap-1-12 {
     width: 8.33333%;
   }
 
-  /* line 128, ../sass/_grid.scss */
+  /* line 113, ../sass/_grid.scss */
   .lap-2-12 {
     width: 16.66667%;
   }
 
-  /* line 128, ../sass/_grid.scss */
+  /* line 113, ../sass/_grid.scss */
   .lap-3-12 {
     width: 25%;
   }
 
-  /* line 128, ../sass/_grid.scss */
+  /* line 113, ../sass/_grid.scss */
   .lap-4-12 {
     width: 33.33333%;
   }
 
-  /* line 128, ../sass/_grid.scss */
+  /* line 113, ../sass/_grid.scss */
   .lap-5-12 {
     width: 41.66667%;
   }
 
-  /* line 128, ../sass/_grid.scss */
+  /* line 113, ../sass/_grid.scss */
   .lap-6-12 {
     width: 50%;
   }
 
-  /* line 128, ../sass/_grid.scss */
+  /* line 113, ../sass/_grid.scss */
   .lap-7-12 {
     width: 58.33333%;
   }
 
-  /* line 128, ../sass/_grid.scss */
+  /* line 113, ../sass/_grid.scss */
   .lap-8-12 {
     width: 66.66667%;
   }
 
-  /* line 128, ../sass/_grid.scss */
+  /* line 113, ../sass/_grid.scss */
   .lap-9-12 {
     width: 75%;
   }
 
-  /* line 128, ../sass/_grid.scss */
+  /* line 113, ../sass/_grid.scss */
   .lap-10-12 {
     width: 83.33333%;
   }
 
-  /* line 128, ../sass/_grid.scss */
+  /* line 113, ../sass/_grid.scss */
   .lap-11-12 {
     width: 91.66667%;
   }
 }
 @media screen and (min-width: 60em) {
-  /* line 137, ../sass/_grid.scss */
+  /* line 122, ../sass/_grid.scss */
   .desk-full {
     width: 100%;
   }
 
-  /* line 138, ../sass/_grid.scss */
+  /* line 123, ../sass/_grid.scss */
   .desk-half {
     width: 50%;
   }
 
-  /* line 128, ../sass/_grid.scss */
+  /* line 113, ../sass/_grid.scss */
   .desk-1-3 {
     width: 33.33333%;
   }
 
-  /* line 128, ../sass/_grid.scss */
+  /* line 113, ../sass/_grid.scss */
   .desk-2-3 {
     width: 66.66667%;
   }
 
-  /* line 128, ../sass/_grid.scss */
+  /* line 113, ../sass/_grid.scss */
   .desk-1-4 {
     width: 25%;
   }
 
-  /* line 128, ../sass/_grid.scss */
+  /* line 113, ../sass/_grid.scss */
   .desk-2-4 {
     width: 50%;
   }
 
-  /* line 128, ../sass/_grid.scss */
+  /* line 113, ../sass/_grid.scss */
   .desk-3-4 {
     width: 75%;
   }
 
-  /* line 128, ../sass/_grid.scss */
+  /* line 113, ../sass/_grid.scss */
   .desk-1-6 {
     width: 16.66667%;
   }
 
-  /* line 128, ../sass/_grid.scss */
+  /* line 113, ../sass/_grid.scss */
   .desk-2-6 {
     width: 33.33333%;
   }
 
-  /* line 128, ../sass/_grid.scss */
+  /* line 113, ../sass/_grid.scss */
   .desk-3-6 {
     width: 50%;
   }
 
-  /* line 128, ../sass/_grid.scss */
+  /* line 113, ../sass/_grid.scss */
   .desk-4-6 {
     width: 66.66667%;
   }
 
-  /* line 128, ../sass/_grid.scss */
+  /* line 113, ../sass/_grid.scss */
   .desk-5-6 {
     width: 83.33333%;
   }
 
-  /* line 128, ../sass/_grid.scss */
+  /* line 113, ../sass/_grid.scss */
   .desk-1-12 {
     width: 8.33333%;
   }
 
-  /* line 128, ../sass/_grid.scss */
+  /* line 113, ../sass/_grid.scss */
   .desk-2-12 {
     width: 16.66667%;
   }
 
-  /* line 128, ../sass/_grid.scss */
+  /* line 113, ../sass/_grid.scss */
   .desk-3-12 {
     width: 25%;
   }
 
-  /* line 128, ../sass/_grid.scss */
+  /* line 113, ../sass/_grid.scss */
   .desk-4-12 {
     width: 33.33333%;
   }
 
-  /* line 128, ../sass/_grid.scss */
+  /* line 113, ../sass/_grid.scss */
   .desk-5-12 {
     width: 41.66667%;
   }
 
-  /* line 128, ../sass/_grid.scss */
+  /* line 113, ../sass/_grid.scss */
   .desk-6-12 {
     width: 50%;
   }
 
-  /* line 128, ../sass/_grid.scss */
+  /* line 113, ../sass/_grid.scss */
   .desk-7-12 {
     width: 58.33333%;
   }
 
-  /* line 128, ../sass/_grid.scss */
+  /* line 113, ../sass/_grid.scss */
   .desk-8-12 {
     width: 66.66667%;
   }
 
-  /* line 128, ../sass/_grid.scss */
+  /* line 113, ../sass/_grid.scss */
   .desk-9-12 {
     width: 75%;
   }
 
-  /* line 128, ../sass/_grid.scss */
+  /* line 113, ../sass/_grid.scss */
   .desk-10-12 {
     width: 83.33333%;
   }
 
-  /* line 128, ../sass/_grid.scss */
+  /* line 113, ../sass/_grid.scss */
   .desk-11-12 {
     width: 91.66667%;
+  }
+}
+@media screen and (min-width: 20em) {
+  /* line 145, ../sass/_grid.scss */
+  body:after {
+    display: block;
+    content: " Name: palm, Size: 20em";
+    position: fixed;
+    right: 10px;
+    top: 10px;
+    padding: 20px 15px;
+    background: rgba(31, 54, 78, 0.8);
+    color: #fff;
+    font-size: 14px;
+    font-family: sans-serif;
+    border-radius: 4px;
+  }
+}
+@media screen and (min-width: 40em) {
+  /* line 145, ../sass/_grid.scss */
+  body:after {
+    display: block;
+    content: " Name: lap, Size: 40em";
+    position: fixed;
+    right: 10px;
+    top: 10px;
+    padding: 20px 15px;
+    background: rgba(31, 54, 78, 0.8);
+    color: #fff;
+    font-size: 14px;
+    font-family: sans-serif;
+    border-radius: 4px;
+  }
+}
+@media screen and (min-width: 60em) {
+  /* line 145, ../sass/_grid.scss */
+  body:after {
+    display: block;
+    content: " Name: desk, Size: 60em";
+    position: fixed;
+    right: 10px;
+    top: 10px;
+    padding: 20px 15px;
+    background: rgba(31, 54, 78, 0.8);
+    color: #fff;
+    font-size: 14px;
+    font-family: sans-serif;
+    border-radius: 4px;
+  }
+}
+@media screen and (min-width: 100em) {
+  /* line 145, ../sass/_grid.scss */
+  body:after {
+    display: block;
+    content: " Name: large, Size: 100em";
+    position: fixed;
+    right: 10px;
+    top: 10px;
+    padding: 20px 15px;
+    background: rgba(31, 54, 78, 0.8);
+    color: #fff;
+    font-size: 14px;
+    font-family: sans-serif;
+    border-radius: 4px;
   }
 }

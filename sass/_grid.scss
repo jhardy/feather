@@ -38,8 +38,6 @@ $feather-settings: (
 );
 
 
-
-
 //$feather-grid: $feather-grid-width, $feather-column-width, $feather-column-count, $feather-gutter-width;
 
 
@@ -133,5 +131,31 @@ $feather-full-grid: $feather-grid-unit * $feather-column-count;
 @mixin bp($point, $type: min-width) {
   @media screen and ($type: map-get(map-get($feather-settings, $point), breakpoint)) {
     @content;
+  }
+}
+
+@mixin feather-debug() {
+  @each $item in $feather-settings {
+    $bp-name: nth($item, 1);
+
+    $bp-size: map-get(nth($item, 2), breakpoint);
+
+
+    @include bp($bp-name) {
+      body:after {
+         display: block;
+         content: " Name: #{$bp-name}, Size: #{$bp-size}";
+         position: fixed;
+         right: 10px;
+         top: 10px;
+         padding: 20px 15px;
+         background: rgba(#1f364e, 0.8);
+         color: #fff;
+         font-size: 14px;
+         font-family: sans-serif;
+         border-radius: 4px;
+
+      }
+    }
   }
 }
