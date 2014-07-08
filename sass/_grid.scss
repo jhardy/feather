@@ -106,6 +106,9 @@ $feather-default-float: left !default;
         @include create-grid-classes($ratios, $namespace, $feather-namespace-seprator, $feather-grid-seperator);
 
         @if $feather-include-offset {
+          .#{$namespace}#{$feather-namespace-seprator}#{$feather-offset-name}-0 {
+            margin-left: 0;
+          }
           @for $i from 1 through $feather-column-count {
             .#{$namespace}#{$feather-namespace-seprator}#{$feather-offset-name}-#{$i} {
               @include offset($i);
