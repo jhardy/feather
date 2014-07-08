@@ -19,21 +19,25 @@ $feather-grid-seperator: "-" !default;
 $feather-settings: (
   palm : (
       ratios: (3, 4),
-      breakpoint: 20em
+      breakpoint: 20em,
+      offset: false
   ),
 
   lap : (
     ratios : (3, 4, 8, 9, 12),
-    breakpoint: 40em
+    breakpoint: 40em,
+    offset: true
   ),
 
   desk: (
     ratios: (3, 4, 6, 12),
-    breakpoint: 60em
+    breakpoint: 60em,
+    offset: true
   ),
 
   large: (
-    breakpoint: 100em
+    breakpoint: 100em,
+    offset: false
   )
 );
 
@@ -64,7 +68,7 @@ $feather-full-grid: $feather-grid-unit * $feather-column-count;
 
 
 /* Names for push and pull classes */
-$feather-include-offset: true !default;
+//$feather-include-offset: true !default;
 $feather-offset-name: "offset" !default;
 
 $feather-include-pull: true !default;
@@ -100,12 +104,14 @@ $feather-default-float: left !default;
   @each $item in $feather-settings {
     $ratios: map-get(nth($item, 2), ratios);
     $namespace: nth($item, 1);
+    $offset: map-get(nth($item, 2), offset);
+
 
     @if( type-of($ratios) != "null") {
       @media screen and (min-width: map-get(nth($item, 2), breakpoint)) {
         @include create-grid-classes($ratios, $namespace, $feather-namespace-seprator, $feather-grid-seperator);
 
-        @if $feather-include-offset {
+        @if $offset {
           .#{$namespace}#{$feather-namespace-seprator}#{$feather-offset-name}-0 {
             margin-left: 0;
           }
