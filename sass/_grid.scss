@@ -64,13 +64,13 @@ $feather-full-grid: $feather-grid-unit * $feather-column-count;
 
 
 /* Names for push and pull classes */
-// $feather-include-offset: true;
-// $feather-offset-name: "offset" !default;
+$feather-include-offset: true !default;
+$feather-offset-name: "offset" !default;
 
-// $feather-include-pull: true;
-// $feather-pull-name: "pull" !default;
+$feather-include-pull: true !default;
+$feather-pull-name: "pull" !default;
 
-// $feather-default-float: left !default;
+$feather-default-float: left !default;
 
 
 @function unit($number, $context: $feather-full-grid) {
@@ -94,12 +94,24 @@ $feather-full-grid: $feather-grid-unit * $feather-column-count;
     padding-left: unit($feather-gutter-width);
   }
 
+
+
+
   @each $item in $feather-settings {
     $ratios: map-get(nth($item, 2), ratios);
+    $namespace: nth($item, 1);
 
     @if( type-of($ratios) != "null") {
       @media screen and (min-width: map-get(nth($item, 2), breakpoint)) {
-        @include create-grid-classes($ratios, nth($item, 1), $feather-namespace-seprator, $feather-grid-seperator);
+        @include create-grid-classes($ratios, $namespace, $feather-namespace-seprator, $feather-grid-seperator);
+
+        @if $feather-include-offset {
+          @for $i from 1 through $feather-column-count {
+            .#{$namespace}#{$feather-namespace-seprator}#{$feather-offset-name}-#{$i} {
+              @include offset($i);
+            }
+          }
+        }
       }
 
     }
@@ -126,6 +138,17 @@ $feather-full-grid: $feather-grid-unit * $feather-column-count;
     @include create-grid-ratios(1, $ratio, $namespace, $namespace-seprator, $grid-seperator);
   }
 
+
+}
+
+@mixin pull($count, $context: $feather-full-grid) {
+  $value: ($feather-grid-unit * $count);
+  margin-left:  unit($value * -1, $context);
+}
+
+@mixin offset($count, $context: $feather-full-grid) {
+  $value: ($feather-grid-unit * $count);
+  margin-left:  unit($value, $context);
 }
 
 @mixin bp($point, $type: min-width) {
