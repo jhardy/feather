@@ -161,7 +161,15 @@ $feather-default-float: left !default;
 }
 
 @mixin bp($point, $type: min-width) {
-  @media screen and ($type: map-get(map-get($feather-settings, $point), breakpoint)) {
+
+  $bp: 0;
+
+  @if( type-of($point) == number) {
+    $bp: $point
+  } @else {
+    $bp: map-get(map-get($feather-settings, $point), breakpoint);
+  }
+  @media screen and ($type: $bp) {
     @content;
   }
 }
@@ -194,21 +202,21 @@ $feather-default-float: left !default;
   }
 }
 
-  $gutter_percentage: unit(-$feather-gutter-width) * 10;
-  $column_percentage: 100% + $gutter_percentage;
+  // $gutter_percentage: unit(-$feather-gutter-width) * 10;
+  // $column_percentage: 100% + $gutter_percentage;
 
-  body:before {
-      content: "";
-      display: block;
-      position: fixed;
-      left: 50%;
-      top: 0;
-      margin-left: -($feather-grid-width/2) * 1px;
-      width: 100%;
-      max-width: $feather-grid-width * 1px;
-      height: 100%;
-      background-image: linear-gradient(90deg, rgba(#f00, 0.5) 78px, transparent 4px);
-      background-size: (unit($feather-grid-unit));
+  // body:before {
+  //     content: "";
+  //     display: block;
+  //     position: fixed;
+  //     left: 50%;
+  //     top: 0;
+  //     margin-left: -($feather-grid-width/2) * 1px;
+  //     width: 100%;
+  //     max-width: $feather-grid-width * 1px;
+  //     height: 100%;
+  //     background-image: linear-gradient(90deg, rgba(#f00, 0.5) 78px, transparent 4px);
+  //     background-size: (unit($feather-grid-unit));
 
-    }
+  //   }
 

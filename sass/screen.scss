@@ -27,7 +27,13 @@
 
 
 .desk {
-     @include bp(lap) {
+     @include bp(800px) {
         width: 30%;
+    }
+}
+
+.lap {
+    @include bp(lap) {
+        width: 100%;
     }
 }
