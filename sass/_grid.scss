@@ -202,21 +202,21 @@ $feather-default-float: left !default;
 
   }
 
-  $gutter_percentage: unit(-$feather-gutter-width) * 10;
-  $column_percentage: 100% + $gutter_percentage;
+//   $gutter_percentage: unit(-$feather-gutter-width) * 10;
+//   $column_percentage: 100% + $gutter_percentage;
 
-  body:before {
-      content: "";
-      display: block;
-      position: fixed;
-      left: 50%;
-      top: 0;
-      margin-left: -($feather-grid-width/2) * 1px;
-      width: 100%;
-      max-width: $feather-grid-width * 1px;
-      height: 100%;
-      background-image: linear-gradient(90deg, rgba(#f00, 0.5) $column_percentage, transparent $gutter_percentage);
-      background-size: (unit($feather-grid-unit) +  unit(-$feather-gutter-width));
+//   body:before {
+//       content: "";
+//       display: block;
+//       position: fixed;
+//       left: 50%;
+//       top: 0;
+//       margin-left: -($feather-grid-width/2) * 1px;
+//       width: 100%;
+//       max-width: $feather-grid-width * 1px;
+//       height: 100%;
+//       background-image: linear-gradient(90deg, rgba(#f00, 0.5) $column_percentage, transparent $gutter_percentage);
+//       background-size: (unit($feather-grid-unit) +  unit(-$feather-gutter-width));
 
-    }
-}
+//     }
+// }
