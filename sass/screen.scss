@@ -22,6 +22,12 @@
 }
 
 .test {
-    @include bp(lap);
+
 }
 
+
+.desk {
+     @include bp(lap) {
+        width: 30%;
+    }
+}

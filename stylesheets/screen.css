@@ -11,6 +11,21 @@
 }
 
 /* Names for push and pull classes */
+/* line 200, ../sass/_grid.scss */
+body:before {
+  content: "";
+  display: block;
+  position: fixed;
+  left: 50%;
+  top: 0;
+  margin-left: -490px;
+  width: 100%;
+  max-width: 980px;
+  height: 100%;
+  background-image: linear-gradient(90deg, rgba(255, 0, 0, 0.5) 78px, transparent 4px);
+  background-size: 8.33333%;
+}
+
 /* apply a natural box layout model to all elements */
 /* line 4, ../sass/screen.scss */
 *, *:before, *:after {
@@ -483,85 +498,6 @@
     margin-left: 100%;
   }
 }
-@media screen and (min-width: palm) {
-  /* line 186, ../sass/_grid.scss */
-  body:after {
-    display: block;
-    content: " Name: palm, Size: 20em";
-    position: fixed;
-    right: 10px;
-    top: 10px;
-    padding: 20px 15px;
-    background: rgba(31, 54, 78, 0.8);
-    color: #fff;
-    font-size: 14px;
-    font-family: sans-serif;
-    border-radius: 4px;
-  }
-}
-@media screen and (min-width: lap) {
-  /* line 186, ../sass/_grid.scss */
-  body:after {
-    display: block;
-    content: " Name: lap, Size: 40em";
-    position: fixed;
-    right: 10px;
-    top: 10px;
-    padding: 20px 15px;
-    background: rgba(31, 54, 78, 0.8);
-    color: #fff;
-    font-size: 14px;
-    font-family: sans-serif;
-    border-radius: 4px;
-  }
-}
-@media screen and (min-width: desk) {
-  /* line 186, ../sass/_grid.scss */
-  body:after {
-    display: block;
-    content: " Name: desk, Size: 60em";
-    position: fixed;
-    right: 10px;
-    top: 10px;
-    padding: 20px 15px;
-    background: rgba(31, 54, 78, 0.8);
-    color: #fff;
-    font-size: 14px;
-    font-family: sans-serif;
-    border-radius: 4px;
-  }
-}
-@media screen and (min-width: large) {
-  /* line 186, ../sass/_grid.scss */
-  body:after {
-    display: block;
-    content: " Name: large, Size: 100em";
-    position: fixed;
-    right: 10px;
-    top: 10px;
-    padding: 20px 15px;
-    background: rgba(31, 54, 78, 0.8);
-    color: #fff;
-    font-size: 14px;
-    font-family: sans-serif;
-    border-radius: 4px;
-  }
-}
-/* line 208, ../sass/_grid.scss */
-body:before {
-  content: "";
-  display: block;
-  position: fixed;
-  left: 50%;
-  top: 0;
-  margin-left: -490px;
-  width: 100%;
-  max-width: 980px;
-  height: 100%;
-  background-image: linear-gradient(90deg, rgba(255, 0, 0, 0.5) 95.93496%, transparent -4.06504%);
-  background-size: 7.92683%;
-}
-
 /* line 13, ../sass/screen.scss */
 .grid-item p {
   background: red;
@@ -571,4 +507,11 @@ body:before {
 .main-site {
   margin: 0 auto;
   max-width: 980px;
+}
+
+@media screen and (min-width: 40em) {
+  /* line 29, ../sass/screen.scss */
+  .desk {
+    width: 30%;
+  }
 }

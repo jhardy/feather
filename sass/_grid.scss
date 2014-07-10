@@ -161,16 +161,7 @@ $feather-default-float: left !default;
 }
 
 @mixin bp($point, $type: min-width) {
-  $val: map-get($feather-settings, $point);
-  $bp: 0;
-
-  @if ($val == "null") {
-    $bp: map-get($val, breakpoint);
-     } @else {
-    $bp: $point;
-  }
-
-  @media screen and ($type: $bp) {
+  @media screen and ($type: map-get(map-get($feather-settings, $point), breakpoint)) {
     @content;
   }
 }
@@ -182,41 +173,42 @@ $feather-default-float: left !default;
     $bp-size: map-get(nth($item, 2), breakpoint);
 
 
-    @include bp($bp-name) {
-      body:after {
-         display: block;
-         content: " Name: #{$bp-name}, Size: #{$bp-size}";
-         position: fixed;
-         right: 10px;
-         top: 10px;
-         padding: 20px 15px;
-         background: rgba(#1f364e, 0.8);
-         color: #fff;
-         font-size: 14px;
-         font-family: sans-serif;
-         border-radius: 4px;
+    // @include bp($bp-name) {
+    //   body:after {
+    //      display: block;
+    //      content: " Name: #{$bp-name}, Size: #{$bp-size}";
+    //      position: fixed;
+    //      right: 10px;
+    //      top: 10px;
+    //      padding: 20px 15px;
+    //      background: rgba(#1f364e, 0.8);
+    //      color: #fff;
+    //      font-size: 14px;
+    //      font-family: sans-serif;
+    //      border-radius: 4px;
 
-      }
-    }
+    //   }
+    // }
 
 
   }
+}
 
-//   $gutter_percentage: unit(-$feather-gutter-width) * 10;
-//   $column_percentage: 100% + $gutter_percentage;
+  $gutter_percentage: unit(-$feather-gutter-width) * 10;
+  $column_percentage: 100% + $gutter_percentage;
 
-//   body:before {
-//       content: "";
-//       display: block;
-//       position: fixed;
-//       left: 50%;
-//       top: 0;
-//       margin-left: -($feather-grid-width/2) * 1px;
-//       width: 100%;
-//       max-width: $feather-grid-width * 1px;
-//       height: 100%;
-//       background-image: linear-gradient(90deg, rgba(#f00, 0.5) $column_percentage, transparent $gutter_percentage);
-//       background-size: (unit($feather-grid-unit) +  unit(-$feather-gutter-width));
+  body:before {
+      content: "";
+      display: block;
+      position: fixed;
+      left: 50%;
+      top: 0;
+      margin-left: -($feather-grid-width/2) * 1px;
+      width: 100%;
+      max-width: $feather-grid-width * 1px;
+      height: 100%;
+      background-image: linear-gradient(90deg, rgba(#f00, 0.5) 78px, transparent 4px);
+      background-size: (unit($feather-grid-unit));
 
-//     }
-// }
+    }
+
