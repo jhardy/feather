@@ -18,9 +18,9 @@ $feather-grid-seperator: "-" !default;
 
 $feather-settings: (
   palm : (
-      ratios: (3, 4),
-      breakpoint: 20em,
-      offset: false
+    ratios: (3, 4),
+    breakpoint: 20em,
+    offset: false
   ),
 
   lap : (
@@ -85,7 +85,7 @@ $feather-default-float: left !default;
 @mixin create-grid() {
 
   .grid-wrap {
-    margin-left: unit(-$feather-gutter-width);
+    margin-left: unit(-$feather-gutter-width);;
     @extend %cf;
     .grid-wrap {
        margin-left: 0;
@@ -161,7 +161,16 @@ $feather-default-float: left !default;
 }
 
 @mixin bp($point, $type: min-width) {
-  @media screen and ($type: map-get(map-get($feather-settings, $point), breakpoint)) {
+  $val: map-get($feather-settings, $point);
+  $bp: 0;
+
+  @if ($val == "null") {
+    $bp: map-get($val, breakpoint);
+     } @else {
+    $bp: $point;
+  }
+
+  @media screen and ($type: $bp) {
     @content;
   }
 }
@@ -189,5 +198,25 @@ $feather-default-float: left !default;
 
       }
     }
+
+
   }
+
+  $gutter_percentage: unit(-$feather-gutter-width) * 10;
+  $column_percentage: 100% + $gutter_percentage;
+
+  body:before {
+      content: "";
+      display: block;
+      position: fixed;
+      left: 50%;
+      top: 0;
+      margin-left: -($feather-grid-width/2) * 1px;
+      width: 100%;
+      max-width: $feather-grid-width * 1px;
+      height: 100%;
+      background-image: linear-gradient(90deg, rgba(#f00, 0.5) $column_percentage, transparent $gutter_percentage);
+      background-size: (unit($feather-grid-unit) +  unit(-$feather-gutter-width));
+
+    }
 }

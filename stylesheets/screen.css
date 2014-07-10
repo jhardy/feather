@@ -483,8 +483,8 @@
     margin-left: 100%;
   }
 }
-@media screen and (min-width: 20em) {
-  /* line 177, ../sass/_grid.scss */
+@media screen and (min-width: palm) {
+  /* line 186, ../sass/_grid.scss */
   body:after {
     display: block;
     content: " Name: palm, Size: 20em";
@@ -499,8 +499,8 @@
     border-radius: 4px;
   }
 }
-@media screen and (min-width: 40em) {
-  /* line 177, ../sass/_grid.scss */
+@media screen and (min-width: lap) {
+  /* line 186, ../sass/_grid.scss */
   body:after {
     display: block;
     content: " Name: lap, Size: 40em";
@@ -515,8 +515,8 @@
     border-radius: 4px;
   }
 }
-@media screen and (min-width: 60em) {
-  /* line 177, ../sass/_grid.scss */
+@media screen and (min-width: desk) {
+  /* line 186, ../sass/_grid.scss */
   body:after {
     display: block;
     content: " Name: desk, Size: 60em";
@@ -531,8 +531,8 @@
     border-radius: 4px;
   }
 }
-@media screen and (min-width: 100em) {
-  /* line 177, ../sass/_grid.scss */
+@media screen and (min-width: large) {
+  /* line 186, ../sass/_grid.scss */
   body:after {
     display: block;
     content: " Name: large, Size: 100em";
@@ -546,4 +546,29 @@
     font-family: sans-serif;
     border-radius: 4px;
   }
+}
+/* line 208, ../sass/_grid.scss */
+body:before {
+  content: "";
+  display: block;
+  position: fixed;
+  left: 50%;
+  top: 0;
+  margin-left: -490px;
+  width: 100%;
+  max-width: 980px;
+  height: 100%;
+  background-image: linear-gradient(90deg, rgba(255, 0, 0, 0.5) 95.93496%, transparent -4.06504%);
+  background-size: 7.92683%;
+}
+
+/* line 13, ../sass/screen.scss */
+.grid-item p {
+  background: red;
+}
+
+/* line 19, ../sass/screen.scss */
+.main-site {
+  margin: 0 auto;
+  max-width: 980px;
 }
